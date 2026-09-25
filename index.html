@@ -202,6 +202,20 @@
   h3.theme{scroll-margin-top:9rem}
   mark{background:rgba(199,162,83,.35);color:inherit;padding:0 .05em;border-radius:2px}
 
+
+  /* --- onglet Chronologie --- */
+  ol.tl{list-style:none;margin:0;padding:0 0 0 1.1rem;border-left:2px solid var(--rule)}
+  .tl-day{position:relative;margin:0 0 1.6rem;padding-left:.9rem}
+  .tl-day::before{content:"";position:absolute;left:-1.55rem;top:.55rem;width:.75rem;height:.75rem;border-radius:50%;background:var(--accent);border:2px solid var(--bg)}
+  h3.tl-date{margin:0;font-size:1.12rem;color:var(--accent)}
+  .tl-places{margin:.1rem 0 .4rem;font-size:.9rem;font-style:italic;color:var(--ink-soft)}
+  ul.tl-ev{list-style:none;margin:0;padding:0}
+  ul.tl-ev>li{display:flex;gap:.8rem;padding:.3rem 0;border-bottom:1px solid var(--rule)}
+  ul.tl-ev>li:last-child{border-bottom:none}
+  .tl-h{flex:none;width:3.4rem;font-size:.86rem;font-variant-numeric:tabular-nums;color:var(--gold);padding-top:.1rem}
+  .tl-t{flex:1 1 auto;min-width:0}
+  .tl-q{display:inline-block;font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--accent-soft);color:var(--accent);border-radius:3px;padding:0 .3rem;margin-right:.15rem}
+  @media (max-width:560px){ul.tl-ev>li{flex-direction:column;gap:0}.tl-h{width:auto}}
   /* --- onglet Tarokka --- */
   .tk-table{
     position:relative;border-radius:6px;overflow:hidden;margin:0 0 1.6rem;
@@ -263,12 +277,13 @@
 <header class="doc">
   <h1>Connaissances des aventuriers</h1>
   <div class="sub">Malédiction de Strahd, tout ce que le groupe a appris, vu ou vécu</div>
-  <div class="meta">Barovie, du 20 octobre au 4 novembre 735</div>
+  <div class="meta">Barovie, du 20 octobre au 1er novembre 735</div>
 </header>
 
 <div class="tabbar" role="tablist">
   <button class="tabbtn" data-tab="infos" role="tab" aria-selected="true">Informations connues</button>
   <button class="tabbtn" data-tab="quetes" role="tab" aria-selected="false">Quêtes</button>
+  <button class="tabbtn" data-tab="chrono" role="tab" aria-selected="false">Chronologie</button>
   <button class="tabbtn" data-tab="tarokka" role="tab" aria-selected="false">Le tirage du Tarokka</button>
 </div>
 
@@ -316,7 +331,7 @@
           <li>Seuls les Vistani sont autorisés à quitter la Barovie. <span class="src">savoir commun ; Ismark, village de Barovie, 22 octobre 735</span></li>
           <li>Strahd gouverne la vallée depuis des siècles ; il l'a nommée en l'honneur de son père, le roi Barov. La conquête remonte à environ 400 ans. <span class="src">les Vistani ; Vasili von Holtz, route de Svalich, 24 octobre 735 ; lettre de Kolyan, Portes de Barovie, 20 octobre 735</span></li>
           <li>Le calendrier barovien compte à partir de l'an 0, « l'unification des cités de la terre d'où vient le diable ». On est en l'an 735. <span class="src">Vasili von Holtz, route de Svalich, 24 octobre 735</span></li>
-          <li>Trois communautés jalonnent la vieille route de Svalich : le village de Barovie à l'est (bourgmestre Kolyan Indirovich, mort ; héritier Ismark) ; Vallaki au centre (baron Vargas Vallakovich, mort le 28 octobre ; désormais Dame Fiona Wachter) ; Krezk à l'ouest, village fortifié bâti autour d'une ancienne abbaye (bourgmestre Dimitri Krezkov). <span class="src">savoir commun ; Ismark ; Jenny, échoppe d'alchimie hors les murs de Vallaki, 25 octobre 735</span></li>
+          <li>Trois communautés jalonnent la vieille route de Svalich : le village de Barovie à l'est (bourgmestre Kolyan Indirovich, mort ; héritier Ismark) ; Vallaki au centre (baron Vargas Vallakovich, mort le 27 octobre ; désormais Dame Fiona Wachter) ; Krezk à l'ouest, village fortifié bâti autour d'une ancienne abbaye (bourgmestre Dimitri Krezkov). <span class="src">savoir commun ; Ismark ; Jenny, échoppe d'alchimie hors les murs de Vallaki, 25 octobre 735</span></li>
           <li>Le château de Ravenloft domine la vallée, au-dessus du village de Barovie. Personne n'y est bienvenu sans invitation. <span class="src">savoir commun ; Ismark, taverne du Sang sur les Vignes, 21 octobre 735</span></li>
           <li>Trajets connus : du village de Barovie à Vallaki, environ 10 heures de marche ; du village au campement vistani de l'étang de Tser, moins de 4 heures. <span class="src">Ismark, village de Barovie, 22 octobre 735</span></li>
           <li>Un vieux moulin à vent se dresse sur la route entre le village de Barovie et Vallaki. Les Vistani en parlent comme d'un lieu à éviter à tout prix. <span class="src">les Vistani, campement de l'étang de Tser, 23 octobre 735</span></li>
@@ -334,15 +349,15 @@
           <li>Strahd contrôle la région : loups, chauves-souris et autres bêtes sont ses espions. <span class="src">les Vistani ; Ismark</span></li>
           <li>Dans la bibliothèque secrète du Manoir Durst, une lettre de Strahd à Gustav Durst, méprisante (« Vous n'êtes que des vers qui se tortillent sur mes terres »), montre qu'il connaissait l'infidélité de Gustav et son « enfant bâtard ». <span class="src">Manoir Durst, village de Barovie, 20 octobre 735</span></li>
           <li>Aux funérailles de Kolyan, Strahd est apparu en personne, a présenté ses condoléances à Ireena (« la Barovie est une terre dangereuse »), et à Ismark qui dégainait : « Ce serait dommage. Je suis le maître de cette vallée. » <span class="src">cimetière du village de Barovie, 23 octobre 735</span></li>
-          <li>Lors d'une audience à Ravenloft, il a raillé la défaite du groupe face aux Guenaudes, refusé d'intervenir gratuitement (« le seigneur de cette vallée n'est pas un mercenaire »), proposé un marché (voir Offres), remarqué « une ombre » et « l'odeur de l'ambre et de vieux pactes » sur Kassian, puis banni le groupe : « Repartez dans la boue... ne revenez jamais mendier à ma porte. » <span class="src">château de Ravenloft, 31 octobre 735</span></li>
+          <li>Lors d'une audience à Ravenloft, il a raillé la défaite du groupe face aux Guenaudes, refusé d'intervenir gratuitement (« le seigneur de cette vallée n'est pas un mercenaire »), proposé un marché (voir Offres), remarqué « une ombre » et « l'odeur de l'ambre et de vieux pactes » sur Kassian, puis banni le groupe : « Repartez dans la boue... ne revenez jamais mendier à ma porte. » <span class="src">château de Ravenloft, 29 octobre 735</span></li>
           <li>Un an avant l'arrivée du groupe, un magicien étranger puissant et charismatique a soulevé le village de Barovie contre Strahd, mené une armée de paysans jusqu'au château, dispersée par la terreur. Mage et Strahd se sont ensuite affrontés en duel magique, du parvis de Ravenloft jusqu'à une falaise au-dessus des chutes de Tser, où Strahd a précipité le mage dans le vide. Stanimir est descendu chercher le corps : l'Ivlis l'avait déjà emporté. <span class="src">Stanimir, témoin oculaire, campement de l'étang de Tser, 23 octobre 735</span></li>
-          <li><strong>Faiblesses de Strahd, selon Rudolph von Richten :</strong> ce n'est pas un vampire ordinaire. Pour le détruire, il faut le forcer à regagner son cercueil, dans les cryptes de Ravenloft, et l'y achever ; partout ailleurs il se dissipe en brume et revient plus fort. Ne jamais l'affronter de face. Il ne peut entrer chez quelqu'un sans invitation. La lumière du soleil direct et l'eau vive lui sont néfastes. La lumière de Pérégrine, quand elle le touche, l'empêche de se régénérer quelques instants ; une flasque d'eau bénite brisée sur lui coupe aussi sa régénération. Il existe probablement un journal intime écrit de sa main : quiconque le possède détient une clé pour détruire son esprit. Il mène en permanence une douzaine de stratagèmes à la fois. <span class="src">Tour de Khazan, lac Baratok, 1er novembre 735</span></li>
-          <li>Strahd assiste en personne au rituel des druides de la colline d'Antan. Il est apparu au sommet, sans un mot, en cavalier encapuchonné sur un grand cheval noir aux sabots et à la crinière de flammes qui peut voler. Il n'est pas descendu, ne s'est pas battu au corps à corps, et n'a pas défendu les berserkers ; il s'est contenté d'observer, puis a annulé une Boule de feu d'Alaris d'un contre-sort, invoqué une meute de loups, transformé brièvement Alaris en mouche, avant de s'élever hors de portée. Alaris a reconnu son visage. Il est resté spectateur muet jusqu'à la fin du rituel, puis a disparu sans un mot à l'instant où la créature née de la statue s'est effondrée. <span class="src">colline d'Antan, 2 novembre 735</span></li>
+          <li><strong>Faiblesses de Strahd, selon Rudolph von Richten :</strong> ce n'est pas un vampire ordinaire. Pour le détruire, il faut le forcer à regagner son cercueil, dans les cryptes de Ravenloft, et l'y achever ; partout ailleurs il se dissipe en brume et revient plus fort. Ne jamais l'affronter de face. Il ne peut entrer chez quelqu'un sans invitation. La lumière du soleil direct et l'eau vive lui sont néfastes. La lumière de Pérégrine, quand elle le touche, l'empêche de se régénérer quelques instants ; une flasque d'eau bénite brisée sur lui coupe aussi sa régénération. Il existe probablement un journal intime écrit de sa main : quiconque le possède détient une clé pour détruire son esprit. Il mène en permanence une douzaine de stratagèmes à la fois. <span class="src">Tour de Khazan, lac Baratok, 30 octobre 735</span></li>
+          <li>Strahd assiste en personne au rituel des druides de la colline d'Antan. Il est apparu au sommet, sans un mot, en cavalier encapuchonné sur un grand cheval noir aux sabots et à la crinière de flammes qui peut voler. Il n'est pas descendu, ne s'est pas battu au corps à corps, et n'a pas défendu les berserkers ; il s'est contenté d'observer, puis a annulé une Boule de feu d'Alaris d'un contre-sort, invoqué une meute de loups, transformé brièvement Alaris en mouche, avant de s'élever hors de portée. Alaris a reconnu son visage. Il est resté spectateur muet jusqu'à la fin du rituel, puis a disparu sans un mot à l'instant où la créature née de la statue s'est effondrée. <span class="src">colline d'Antan, 31 octobre 735</span></li>
         </ul>
       </div>
 
       <div class="themeblock">
-        <h3 class="theme" id="t-ravenloft">Le château de Ravenloft <span class="src">ce que le groupe en a vu, 31 octobre 735</span></h3>
+        <h3 class="theme" id="t-ravenloft">Le château de Ravenloft <span class="src">ce que le groupe en a vu, 29 octobre 735</span></h3>
         <ul class="facts">
           <li>Le pont-levis s'abaisse seul. À l'entrée, le majordome Rahadin exige qu'on dépose armes et focaliseurs : « On ne se présente pas armé à la table de son souverain. »</li>
           <li>Rahadin : elfe, froid, cérémonieux, « maître d'hôte de la demeure du comte ». Quand on l'approche de trop près, on entend un nombre incalculable de voix hurlantes autour de lui, qui s'estompent dès qu'on recule.</li>
@@ -359,9 +374,9 @@
           <li>Serment de Strahd aux Vistani : après une bataille perdue, alors qu'il fuyait, il fut recueilli et caché par les ancêtres vistani. Il jura : « Tant que ma lignée règnera sur ces terres, votre peuple sera libre... quiconque lèvera la main sur un Vistani connaîtra ma colère. » <span class="src">Arrigal, campement vistani au sud de Vallaki, 25 octobre 735</span></li>
           <li>Les Vistani refusent de prendre parti contre Strahd et ne briseront pas cette trêve. <span class="src">Arrigal, campement vistani au sud de Vallaki, 25 octobre 735</span></li>
           <li>Certaines femmes vistani ont le don de préscience ; la plus grande est Madame Eva. <span class="src">les trois Vistani de la taverne du village de Barovie, 21 octobre 735</span></li>
-          <li>Les âmes de ceux qui meurent en Barovie ne peuvent pas quitter le domaine ni rejoindre l'au-delà ; elles restent prisonnières. <span class="src">les Vistani, 23 octobre 735 ; repris par la matriarche du Vieux Moulin, 31 octobre 735</span></li>
+          <li>Les âmes de ceux qui meurent en Barovie ne peuvent pas quitter le domaine ni rejoindre l'au-delà ; elles restent prisonnières. <span class="src">les Vistani, 23 octobre 735 ; repris par la matriarche du Vieux Moulin, 29 octobre 735</span></li>
           <li>Les corbeaux porteraient des âmes perdues ; les tuer porte malheur. <span class="src">les Vistani, campement de l'étang de Tser, 23 octobre 735</span></li>
-          <li>Il existe un vieux pacte de non-agression entre les Vistani et les Guenaudes du Vieux Moulin (« elles ne touchent pas aux Vistani, on ne touche pas à elles ») ; ce respect ne s'étend pas forcément au groupe. <span class="src">Luvash, campement vistani au sud de Vallaki, 31 octobre 735</span></li>
+          <li>Il existe un vieux pacte de non-agression entre les Vistani et les Guenaudes du Vieux Moulin (« elles ne touchent pas aux Vistani, on ne touche pas à elles ») ; ce respect ne s'étend pas forcément au groupe. <span class="src">Luvash, campement vistani au sud de Vallaki, 29 octobre 735</span></li>
           <li>Bluto Krogarov, pêcheur ivrogne de Vallaki, a tenté de noyer la petite Arabelle « pour faire revenir les poissons », croyant sacrifier une Vistani porte-bonheur. <span class="src">lac Zarovich, 25 octobre 735</span></li>
         </ul>
       </div>
@@ -371,11 +386,11 @@
         <ul class="facts">
           <li>Deux forces divines veillent sur les Baroviens : le Seigneur matinal (dieu solaire, du lever au coucher du soleil) et Mère Nuit (présente du crépuscule à l'aube). <span class="src">savoir commun ; Ireena, village de Barovie, 22 octobre 735</span></li>
           <li>Depuis des siècles, le soleil ne perce plus les nuages et le Seigneur matinal ne répond plus aux prières. La plupart des Baroviens pensent que Mère Nuit les a abandonnés et leur a envoyé Strahd pour les punir des offenses de leurs ancêtres. <span class="src">savoir commun ; Ireena, village de Barovie, 22 octobre 735</span></li>
-          <li>Le culte du Seigneur matinal, « religion principale de la Barovie », a été apporté dans la vallée par Strahd von Zarovich lui-même ; ce n'était pas la foi dominante avant lui. Pour l'Abbé, c'est la figure du jour, de l'espoir, de la vie et de la guérison. <span class="src">l'Abbé, Krezk, 4 novembre 735</span></li>
-          <li>« Il ne faut jamais faire du mal aux corbeaux, ça porte malheur. » <span class="src">Davian Martikov, vignoble du Magicien des Vins, 1er novembre 735</span></li>
+          <li>Le culte du Seigneur matinal, « religion principale de la Barovie », a été apporté dans la vallée par Strahd von Zarovich lui-même ; ce n'était pas la foi dominante avant lui. Pour l'Abbé, c'est la figure du jour, de l'espoir, de la vie et de la guérison. <span class="src">l'Abbé, Krezk, 1er novembre 735</span></li>
+          <li>« Il ne faut jamais faire du mal aux corbeaux, ça porte malheur. » <span class="src">Davian Martikov, vignoble du Magicien des Vins, 30 octobre 735</span></li>
           <li>Les gens pensent souvent que les Vistani servent le diable Strahd ; eux seuls peuvent quitter la Barovie. <span class="src">village de Barovie, 22 octobre 735</span></li>
           <li>L'abbaye de Krezk est vouée au Seigneur matinal. Un « abbé » la dirige ; il pourrait détenir une magie de restauration. <span class="src">Père Donavich, église du village de Barovie, 22 octobre 735</span></li>
-          <li>Près du Vieux Moulin, un cercle de quatre pierres anciennes gravées de symboles (carrés barrés, cercle rayonnant, points, traits) : un ancien lieu de culte, d'intention « mitigée », pas magique au sens arcanique. Un corbeau y picorait une tarte contenant une dent de lait humaine fraîche. <span class="src">identifié par Alaris et Kassian, orée de la forêt près du Vieux Moulin, 30 octobre 735</span></li>
+          <li>Près du Vieux Moulin, un cercle de quatre pierres anciennes gravées de symboles (carrés barrés, cercle rayonnant, points, traits) : un ancien lieu de culte, d'intention « mitigée », pas magique au sens arcanique. Un corbeau y picorait une tarte contenant une dent de lait humaine fraîche. <span class="src">identifié par Alaris et Kassian, orée de la forêt près du Vieux Moulin, 28 octobre 735</span></li>
         </ul>
       </div>
 
@@ -387,9 +402,9 @@
           <li>Au pont des chutes de Tser, quatre gargouilles de pierre se sont animées et ont attaqué le groupe (tentant de précipiter Pérégrine et Alaris dans le gouffre), sur l'ordre silencieux d'une femme au teint marmoréen, en robe sombre, qui prenait des notes dans un carnet de cuir. Elle a arrêté l'attaque d'un coup, adressé un signe de tête, puis disparu dans la brume sans un mot. Jamais identifiée. <span class="src">pont des chutes de Tser, 24 octobre 735</span></li>
           <li>Sur la route de Svalich, une créature au visage masqué d'un crâne animal, suspendue par les genoux à une branche, a tranché une mèche de cheveux de Vrede à son insu et accroché à son sac une effigie de brindilles et d'ossements, en promettant de le « dévorer » après un « jeu de cache-cache ». Disparue dans un rire strident. Jamais identifiée. <span class="src">route de Svalich, 24 octobre 735</span></li>
           <li>Six rejetons vampiriques, cachés dans des caisses au grenier du fabricant de cercueils Henrik van der Voort (sur l'ordre d'une « femme bien habillée » jamais identifiée), se sont échappés en tuant deux gardes. Toujours en liberté autour de Vallaki. <span class="src">découverts le 24 octobre, évadés le 25 octobre 735</span></li>
-          <li>Sur la route du lac Baratok, un groupe de cinq « chasseurs » armés de lances, déjà croisé une première fois, a tendu une embuscade au groupe à la sortie de la tour de Van Richten. Trois se sont révélés être des loups-garous et ont été tués ; deux ont fui sans combattre. Van Richten avait prévenu : « il était probable que ce soit des loups-garous ». <span class="src">route et sortie de la Tour de Khazan, lac Baratok, 1er novembre 735</span></li>
+          <li>Sur la route du lac Baratok, un groupe de cinq « chasseurs » armés de lances, déjà croisé une première fois, a tendu une embuscade au groupe à la sortie de la tour de Van Richten. Trois se sont révélés être des loups-garous et ont été tués ; deux ont fui sans combattre. Van Richten avait prévenu : « il était probable que ce soit des loups-garous ». <span class="src">route et sortie de la Tour de Khazan, lac Baratok, 30 octobre 735</span></li>
           <li>L'argent blesse les loups-garous ; le groupe s'est équipé en armes et munitions d'argent (poudre d'argent réduite par le forgeron Wayland). <span class="src">Wayland ; Van Richten</span></li>
-          <li>Au carrefour des routes de Krezk, de Vallaki et du vignoble, des empreintes de loups marchant debout ; plus haut, des hurlements qui se répondent. La piste mène, au nord le long du lac Baratok, à une grotte en gueule de loup éclairée de torches (voir « La piste des loups-garous »). <span class="src">4 novembre 735</span></li>
+          <li>Au carrefour des routes de Krezk, de Vallaki et du vignoble, des empreintes de loups marchant debout ; plus haut, des hurlements qui se répondent. La piste mène, au nord le long du lac Baratok, à une grotte en gueule de loup éclairée de torches (voir « La piste des loups-garous »). <span class="src">1er novembre 735</span></li>
         </ul>
       </div>
 
@@ -397,20 +412,20 @@
         <h3 class="theme" id="t-vallaki">Vallaki</h3>
         <ul class="facts">
           <li>« La seule lueur d'espoir de cette vallée », selon feu le baron Vargas Vallakovich, qui avait décrété la joie obligatoire (« La tristesse est un crime ») et un festival par semaine, censé tenir Strahd à distance. <span class="src">le baron, manoir du bourgmestre, 24 octobre 735 ; rumeurs de Vallaki ; observé fin octobre 735</span></li>
-          <li>Izek Strazni, chef de la garde et bras droit du baron, élevé par lui « comme un fils » : un homme extrêmement redouté, au bras difforme, capable de créer du feu. <span class="src">Père Lucian, 24 octobre 735 ; Fiona Wachter, 26 octobre 735 ; rumeur de l'auberge de l'Eau Bleue, 24 octobre 735</span></li>
-          <li>Le groupe a exécuté Izek au cimetière de l'église Saint-Andral, dans un piège monté avec Dame Wachter et ses fils. Avant de mourir, Izek a murmuré quelque chose comme « il faut que je la protège ». <span class="src">cimetière Saint-Andral, Vallaki, 28 octobre 735</span></li>
-          <li>Dame Fiona Wachter a renversé le baron par une révolution (hommes masqués, ses fidèles). Le baron et la baronne ont été tués. Fiona dirige désormais la ville ; sa milice porte des brassards noirs et a remplacé l'ancienne garde. <span class="src">place de Vallaki, 28 octobre 735</span></li>
-          <li>Dame Fiona Wachter : noble longtemps opposée au baron (« Je préférerais servir le diable qu'un fou », disait-elle en public). La rumeur publique dit sa famille « depuis longtemps liée à Strahd ». Deux fils adultes, Karl et Nikolai, fauteurs de troubles notoires. Une fille recluse, Stella : un mariage arrangé avec Victor Vallakovich avait été envisagé ; depuis, selon Vasili von Holtz, Stella « n'est plus elle-même » et Dame Wachter la garde chez elle. Fiona veut que Victor réponde de ses actes envers sa fille. <span class="src">rumeurs de Vallaki ; Vasili von Holtz, 27 octobre 735 ; Fiona, 30 octobre 735</span></li>
-          <li>Alliée officielle du groupe depuis le pacte contre Izek : accès à sa bibliothèque privée, un manuscrit d'histoire en récompense, promesse d'un sauf-conduit dans la vallée. <span class="src">Wachterhaus, Vallaki, 26-31 octobre 735</span></li>
-          <li>Ernst Larnak : « associé » et espion de Fiona, écoute aux portes. <span class="src">Vallaki, 28-31 octobre 735</span></li>
-          <li>Victor Vallakovich, fils du baron, apprenti magicien instable : a disparu pendant la révolution ; le groupe a vu une silhouette passer l'angle du bâtiment à 40 pieds de haut avant de disparaître. Son atelier au grenier contenait de la nécromancie (chats squelettiques), un cercle de téléportation gravé « défectueux et potentiellement mortel », et un miroir d'invocation permettant d'appeler « le fantôme d'un assassin » via un poème (miroir brisé par Pérégrine). Son grimoire n'était plus sur place. <span class="src">grenier du manoir du bourgmestre, Vallaki, 28 octobre 735</span></li>
-          <li>On voit parfois des éclats de lumière violacée sortir du grenier du manoir du bourgmestre. <span class="src">rumeur de Vallaki ; relié par Van Richten aux pratiques de Victor, 1er novembre 735</span></li>
-          <li>L'auberge de l'Eau Bleue (Urwin et Danica Martikov) : gîte et couvert ; Urwin « a des yeux et des oreilles partout dans Vallaki ». Il a mis le groupe en garde contre Fiona : « Méfiez-vous des eaux qui dorment... elle n'a jamais caché son mépris pour ceux qui s'opposent au château... je ne suis pas sûr que les étrangers armés y soient les bienvenus très longtemps. » <span class="src">auberge de l'Eau Bleue, Vallaki, 24 et 28 octobre 735</span></li>
-          <li>Gadof Blinsky, fabricant de jouets : s'inspire « des peurs des gens, ou de ce qui fait rire ». Une poupée à l'effigie d'Ireena, dans sa boutique, était une commande. Plus tard, le groupe a découvert une pièce entière de poupées Blinsky à l'effigie d'Ireena dans une chambre verrouillée du manoir du bourgmestre, où Ireena elle-même était retenue par Izek. <span class="src">boutique de jouets, Vallaki, 24 octobre 735 ; manoir du bourgmestre, 28 octobre 735</span></li>
+          <li>Izek Strazni, chef de la garde et bras droit du baron, élevé par lui « comme un fils » : un homme extrêmement redouté, au bras difforme, capable de créer du feu. <span class="src">Père Lucian, 24 octobre 735 ; Fiona Wachter, 25 octobre 735 ; rumeur de l'auberge de l'Eau Bleue, 24 octobre 735</span></li>
+          <li>Le groupe a exécuté Izek au cimetière de l'église Saint-Andral, dans un piège monté avec Dame Wachter et ses fils. Avant de mourir, Izek a murmuré quelque chose comme « il faut que je la protège ». <span class="src">cimetière Saint-Andral, Vallaki, 27 octobre 735</span></li>
+          <li>Dame Fiona Wachter a renversé le baron par une révolution (hommes masqués, ses fidèles). Le baron et la baronne ont été tués. Fiona dirige désormais la ville ; sa milice porte des brassards noirs et a remplacé l'ancienne garde. <span class="src">place de Vallaki, 27 octobre 735</span></li>
+          <li>Dame Fiona Wachter : noble longtemps opposée au baron (« Je préférerais servir le diable qu'un fou », disait-elle en public). La rumeur publique dit sa famille « depuis longtemps liée à Strahd ». Deux fils adultes, Karl et Nikolai, fauteurs de troubles notoires. Une fille recluse, Stella : un mariage arrangé avec Victor Vallakovich avait été envisagé ; depuis, selon Vasili von Holtz, Stella « n'est plus elle-même » et Dame Wachter la garde chez elle. Fiona veut que Victor réponde de ses actes envers sa fille. <span class="src">rumeurs de Vallaki ; Vasili von Holtz, 26 octobre 735 ; Fiona, 28 octobre 735</span></li>
+          <li>Alliée officielle du groupe depuis le pacte contre Izek : accès à sa bibliothèque privée, un manuscrit d'histoire en récompense, promesse d'un sauf-conduit dans la vallée. <span class="src">Wachterhaus, Vallaki, 25-29 octobre 735</span></li>
+          <li>Ernst Larnak : « associé » et espion de Fiona, écoute aux portes. <span class="src">Vallaki, 27-29 octobre 735</span></li>
+          <li>Victor Vallakovich, fils du baron, apprenti magicien instable : a disparu pendant la révolution ; le groupe a vu une silhouette passer l'angle du bâtiment à 40 pieds de haut avant de disparaître. Son atelier au grenier contenait de la nécromancie (chats squelettiques), un cercle de téléportation gravé « défectueux et potentiellement mortel », et un miroir d'invocation permettant d'appeler « le fantôme d'un assassin » via un poème (miroir brisé par Pérégrine). Son grimoire n'était plus sur place. <span class="src">grenier du manoir du bourgmestre, Vallaki, 27 octobre 735</span></li>
+          <li>On voit parfois des éclats de lumière violacée sortir du grenier du manoir du bourgmestre. <span class="src">rumeur de Vallaki ; relié par Van Richten aux pratiques de Victor, 30 octobre 735</span></li>
+          <li>L'auberge de l'Eau Bleue (Urwin et Danica Martikov) : gîte et couvert ; Urwin « a des yeux et des oreilles partout dans Vallaki ». Il a mis le groupe en garde contre Fiona : « Méfiez-vous des eaux qui dorment... elle n'a jamais caché son mépris pour ceux qui s'opposent au château... je ne suis pas sûr que les étrangers armés y soient les bienvenus très longtemps. » <span class="src">auberge de l'Eau Bleue, Vallaki, 24 et 27 octobre 735</span></li>
+          <li>Gadof Blinsky, fabricant de jouets : s'inspire « des peurs des gens, ou de ce qui fait rire ». Une poupée à l'effigie d'Ireena, dans sa boutique, était une commande. Plus tard, le groupe a découvert une pièce entière de poupées Blinsky à l'effigie d'Ireena dans une chambre verrouillée du manoir du bourgmestre, où Ireena elle-même était retenue par Izek. <span class="src">boutique de jouets, Vallaki, 24 octobre 735 ; manoir du bourgmestre, 27 octobre 735</span></li>
           <li>Le fabricant de cercueils Henrik van der Voort avait volé, sous la contrainte, les Os de Saint-Andral et caché six rejetons vampiriques dans son grenier. Il a été sommé de fuir la ville par le groupe. <span class="src">atelier du fabricant de cercueils, Vallaki, 24 octobre 735</span></li>
           <li>Jenny, alchimiste installée hors les murs : vend potions, kits, traités. Elle a vu passer une jeune Vistani solitaire (brune, cheveux longs, peut-être un bandana, pas de lunettes), venue seule acheter des potions et poser des questions, repartie vers l'ouest ; elle a aussi vu passer Rictavio et son singe. <span class="src">échoppe d'alchimie hors les murs de Vallaki, 25 octobre 735</span></li>
-          <li>Lars Kjurls : garde de Vallaki, traîné sur les pavés par ordre du baron au festival ; il vit avec sa petite sœur Elina. Informateur discret du groupe. <span class="src">Vallaki, 28 octobre 735</span></li>
-          <li>Udo Lukovich, cordonnier, avait été emprisonné par le baron pour avoir brandi une pancarte de protestation ; retrouvé enchaîné dans un débarras du manoir et libéré. Il tient pour le groupe « un petit historique » de ce qui se passe à Vallaki en son absence. <span class="src">manoir du bourgmestre, Vallaki, 28 octobre 735</span></li>
+          <li>Lars Kjurls : garde de Vallaki, traîné sur les pavés par ordre du baron au festival ; il vit avec sa petite sœur Elina. Informateur discret du groupe. <span class="src">Vallaki, 27 octobre 735</span></li>
+          <li>Udo Lukovich, cordonnier, avait été emprisonné par le baron pour avoir brandi une pancarte de protestation ; retrouvé enchaîné dans un débarras du manoir et libéré. Il tient pour le groupe « un petit historique » de ce qui se passe à Vallaki en son absence. <span class="src">manoir du bourgmestre, Vallaki, 27 octobre 735</span></li>
           <li>Rumeurs des environs : la pêche sur le lac Zarovich est trop dangereuse (seul Bluto s'y risque, sans rien prendre) ; on ne voit plus le mage fou du mont Baratok, qui rôdait le long de la berge nord du lac ; un campement vistani au sud-ouest ; un manoir hanté à l'ouest (légende d'un dragon mort il y a très longtemps) ; un village abandonné au sud depuis des décennies, dont le bourgmestre aurait commis un méfait attirant la colère de Strahd. <span class="src">rumeurs de Vallaki ; Jenny, 25 octobre 735 ; Wayland et Père Lucian, 24 octobre 735</span></li>
         </ul>
       </div>
@@ -433,28 +448,28 @@
         <ul class="facts">
           <li>Fille adoptive de Kolyan, pas sa fille biologique : il l'a trouvée et élevée ; personne ne connaît ses origines. <span class="src">Père Donavich, village de Barovie, 22 octobre 735</span></li>
           <li>Elle a été mordue au cou par Strahd (deux trous, côté gauche) « il y a quelques jours, quelques semaines », avant la mort de son père ; elle ne se souvient que « d'un regard avec une faim ardente ». Strahd s'intéresse à elle et la traque. <span class="src">Ireena, manoir du bourgmestre, village de Barovie, 22 octobre 735</span></li>
-          <li>Elle a raconté que ses vrais parents ont été tués par un loup géant dans les bois, et qu'Izek Strazni l'avait sauvée enfant en « laissant la bête lui arracher le bras » pour qu'elle s'enfuie ; Izek l'appelait « son petit oiseau, sa petite sœur » et lui a rendu un jouet de sa petite enfance. Le groupe en a déduit un possible lien de fratrie, sans qu'Ireena l'ait affirmé nettement. <span class="src">manoir du bourgmestre, Vallaki, 28 octobre 735</span></li>
-          <li>Elle refuse d'être une monnaie d'échange (contre les Guenaudes, contre Strahd) et pousse le groupe à chercher d'autres issues. Elle s'entraîne désormais à se battre à leurs côtés. Vrede lui a confié de l'eau bénite. <span class="src">22 octobre au 1er novembre 735</span></li>
-          <li>Elle a gagné Krezk avec Ismark et le groupe ; elle cherche à l'abbaye un lieu où être protégée. <span class="src">Krezk, 4 novembre 735</span></li>
+          <li>Elle a raconté que ses vrais parents ont été tués par un loup géant dans les bois, et qu'Izek Strazni l'avait sauvée enfant en « laissant la bête lui arracher le bras » pour qu'elle s'enfuie ; Izek l'appelait « son petit oiseau, sa petite sœur » et lui a rendu un jouet de sa petite enfance. Le groupe en a déduit un possible lien de fratrie, sans qu'Ireena l'ait affirmé nettement. <span class="src">manoir du bourgmestre, Vallaki, 27 octobre 735</span></li>
+          <li>Elle refuse d'être une monnaie d'échange (contre les Guenaudes, contre Strahd) et pousse le groupe à chercher d'autres issues. Elle s'entraîne désormais à se battre à leurs côtés. Vrede lui a confié de l'eau bénite. <span class="src">22 octobre au 30 octobre 735</span></li>
+          <li>Elle a gagné Krezk avec Ismark et le groupe ; elle cherche à l'abbaye un lieu où être protégée. <span class="src">Krezk, 1er novembre 735</span></li>
         </ul>
       </div>
 
       <div class="themeblock">
-        <h3 class="theme" id="t-krezk">Krezk et son abbaye <span class="src">ce que le groupe y a vu, 4 novembre 735</span></h3>
+        <h3 class="theme" id="t-krezk">Krezk et son abbaye <span class="src">ce que le groupe y a vu, 1er novembre 735</span></h3>
         <ul class="facts">
           <li>Village fortifié à l'ouest de la vallée, bâti autour d'une ancienne abbaye ; bourgmestre Dimitri Krezkov (« dynastie Krezkov »). <span class="src">savoir commun ; Jenny, échoppe d'alchimie hors les murs de Vallaki, 25 octobre 735</span></li>
           <li>Le tirage du Tarokka y situe « l'Allié » : une Vistana seule à la recherche de son mentor. <span class="src">Madame Eva, campement de l'étang de Tser, 23 octobre 735</span></li>
-          <li>Une livraison de vin du vignoble du Magicien des Vins est destinée au bourgmestre de Krezk ; le groupe l'emporte comme laissez-passer pour entrer dans le village fermé. <span class="src">Davian Martikov, vignoble, 1er novembre 735</span></li>
-          <li>Krezk n'ouvre pas aux étrangers : les gardes ont d'abord refusé l'entrée, puis reconnu la livraison des Martikov ; Ismark s'est présenté comme fils de feu Kolyan Indirovich. Le groupe peut revenir, sur la garantie des Martikov. <span class="src">corps de garde ; Dmitri Krezkov, Krezk, 4 novembre 735</span></li>
-          <li>Un petit village en autarcie derrière un rempart de vingt pieds : masures de bois au toit de chaume, sapins jusque dans l'enceinte, un lac au nord, un cimetière dans les arbres. Les villageois ne sortent presque jamais, de peur des loups et des loups-garous. Le vin arrive d'ordinaire une fois par mois. Seul commerce : celui de Darovich. <span class="src">Krezk, 4 novembre 735</span></li>
-          <li>Dmitri Krezkov, seigneur de Krezk, en deuil : son fils Ilya, 14 ans, quatrième et dernier enfant du couple, est mort d'une fièvre non contagieuse, enterré deux jours plus tôt. Les autres enfants sont morts d'attaques de loups-garous ou d'accidents. Les gardes portaient un ruban noir. <span class="src">un garde ; villageois, Krezk, 4 novembre 735</span></li>
-          <li>Hospitalité dans la demeure des Krezkov, la plus grande bâtisse du village, en échange d'une participation aux tâches (bois, bêtes, récoltes). <span class="src">Dmitri Krezkov, Krezk, 4 novembre 735</span></li>
-          <li>Au cimetière, plusieurs tombes ont été creusées à la hâte puis rebouchées, comme si l'on y avait cherché quelque chose. Les Krezkov l'avaient remarqué, n'en connaissent pas la cause et refusent de rouvrir les tombes. <span class="src">cimetière ; Dmitri Krezkov, Krezk, 4 novembre 735</span></li>
-          <li>Au nord du village, près d'un bassin à l'eau presque scintillante, un vieux kiosque, « l'autel du Soleil blanc », abrite la statue de bois d'un homme en pleurs, torse nu, les bras ouverts. <span class="src">un garde, Krezk, 4 novembre 735</span></li>
-          <li>Un nouveau-né n'a pas crié à sa naissance. Selon la sage-femme Kretyana, c'est le signe d'un enfant « sans âme » ; elle croit que la plupart des Baroviens n'en ont pas : des gens effacés, qui « ne vivront qu'une vie subie ». Anna Krezkova parle d'une croyance répandue. <span class="src">Kretyana ; Anna Krezkova, Krezk, 4 novembre 735</span></li>
-          <li>Chaque jour à midi, douze coups de cloche à l'abbaye, suivis de cris d'excitation étranges ; les villageois pensent à un repas donné par l'Abbé à ceux qu'il soigne. L'abbaye abrite aussi un asile. « On ne monte pas là-haut sans raison… redescendez avant la nuit. » Anna Krezkova ignore si son sol est consacré. <span class="src">villageois ; Dmitri et Anna Krezkov, Krezk, 4 novembre 735</span></li>
-          <li>L'Abbé : très jeune, vêtu de clair, d'une présence presque éthérée, un symbole du Seigneur matinal ostensiblement porté. Il a relevé Ilya au terme d'une heure de rituel ; la prière de Pérégrine n'a perçu chez lui qu'une foi sincère. Il ne sait pas si Ilya a une âme. Dmitri a demandé la discrétion sur ce « miracle ». <span class="src">demeure des Krezkov, Krezk, 4 novembre 735</span></li>
-          <li>Les Krezkov sont les seuls nobles de Krezk ; ils ne connaissent Dame Wachter que de nom, sont peu liés au reste de la vallée depuis les attaques de loups, et pensent qu'une tanière se cache dans les montagnes. <span class="src">Dmitri et Anna Krezkov, Krezk, 4 novembre 735</span></li>
+          <li>Une livraison de vin du vignoble du Magicien des Vins est destinée au bourgmestre de Krezk ; le groupe l'emporte comme laissez-passer pour entrer dans le village fermé. <span class="src">Davian Martikov, vignoble, 30 octobre 735</span></li>
+          <li>Krezk n'ouvre pas aux étrangers : les gardes ont d'abord refusé l'entrée, puis reconnu la livraison des Martikov ; Ismark s'est présenté comme fils de feu Kolyan Indirovich. Le groupe peut revenir, sur la garantie des Martikov. <span class="src">corps de garde ; Dmitri Krezkov, Krezk, 1er novembre 735</span></li>
+          <li>Un petit village en autarcie derrière un rempart de vingt pieds : masures de bois au toit de chaume, sapins jusque dans l'enceinte, un lac au nord, un cimetière dans les arbres. Les villageois ne sortent presque jamais, de peur des loups et des loups-garous. Le vin arrive d'ordinaire une fois par mois. Seul commerce : celui de Darovich. <span class="src">Krezk, 1er novembre 735</span></li>
+          <li>Dmitri Krezkov, seigneur de Krezk, en deuil : son fils Ilya, 14 ans, quatrième et dernier enfant du couple, est mort d'une fièvre non contagieuse, enterré deux jours plus tôt. Les autres enfants sont morts d'attaques de loups-garous ou d'accidents. Les gardes portaient un ruban noir. <span class="src">un garde ; villageois, Krezk, 1er novembre 735</span></li>
+          <li>Hospitalité dans la demeure des Krezkov, la plus grande bâtisse du village, en échange d'une participation aux tâches (bois, bêtes, récoltes). <span class="src">Dmitri Krezkov, Krezk, 1er novembre 735</span></li>
+          <li>Au cimetière, plusieurs tombes ont été creusées à la hâte puis rebouchées, comme si l'on y avait cherché quelque chose. Les Krezkov l'avaient remarqué, n'en connaissent pas la cause et refusent de rouvrir les tombes. <span class="src">cimetière ; Dmitri Krezkov, Krezk, 1er novembre 735</span></li>
+          <li>Au nord du village, près d'un bassin à l'eau presque scintillante, un vieux kiosque, « l'autel du Soleil blanc », abrite la statue de bois d'un homme en pleurs, torse nu, les bras ouverts. <span class="src">un garde, Krezk, 1er novembre 735</span></li>
+          <li>Un nouveau-né n'a pas crié à sa naissance. Selon la sage-femme Kretyana, c'est le signe d'un enfant « sans âme » ; elle croit que la plupart des Baroviens n'en ont pas : des gens effacés, qui « ne vivront qu'une vie subie ». Anna Krezkova parle d'une croyance répandue. <span class="src">Kretyana ; Anna Krezkova, Krezk, 1er novembre 735</span></li>
+          <li>Chaque jour à midi, douze coups de cloche à l'abbaye, suivis de cris d'excitation étranges ; les villageois pensent à un repas donné par l'Abbé à ceux qu'il soigne. L'abbaye abrite aussi un asile. « On ne monte pas là-haut sans raison… redescendez avant la nuit. » Anna Krezkova ignore si son sol est consacré. <span class="src">villageois ; Dmitri et Anna Krezkov, Krezk, 1er novembre 735</span></li>
+          <li>L'Abbé : très jeune, vêtu de clair, d'une présence presque éthérée, un symbole du Seigneur matinal ostensiblement porté. Il a relevé Ilya au terme d'une heure de rituel ; la prière de Pérégrine n'a perçu chez lui qu'une foi sincère. Il ne sait pas si Ilya a une âme. Dmitri a demandé la discrétion sur ce « miracle ». <span class="src">demeure des Krezkov, Krezk, 1er novembre 735</span></li>
+          <li>Les Krezkov sont les seuls nobles de Krezk ; ils ne connaissent Dame Wachter que de nom, sont peu liés au reste de la vallée depuis les attaques de loups, et pensent qu'une tanière se cache dans les montagnes. <span class="src">Dmitri et Anna Krezkov, Krezk, 1er novembre 735</span></li>
         </ul>
       </div>
 
@@ -462,30 +477,30 @@
         <h3 class="theme" id="t-vignoble">Le vignoble du Magicien des Vins et la famille Martikov</h3>
         <ul class="facts">
           <li>Exploitation viticole au sud de Krezk : toutes les tavernes de Barovie y achètent leur vin. Tenue par la famille Martikov. Le groupe y a été envoyé enquêter sur les retards de livraison. <span class="src">Jenny, 25 octobre 735 ; Urwin Martikov, auberge de l'Eau Bleue, 24 octobre 735</span></li>
-          <li>Le domaine était assiégé par des druides corrompus et leurs créatures de brindilles ; le groupe a levé le siège, tué les quatre druides et réinstallé la famille. <span class="src">vignoble du Magicien des Vins, 1er-2 novembre 735</span></li>
-          <li>Davian Martikov, le patriarche, a confié : le domaine tient debout depuis des siècles grâce à trois pierres magiques (« grosses comme des pommes de pin »), des graines créées jadis par un magicien, d'où le nom du domaine. Les trois ont été volées, l'une après l'autre : une à Bérez (chez « la vieille qui y règne », qui hait les Martikov ; trois des leurs y sont allés, aucun n'est revenu) ; une prise « il y a quelques jours » par les druides « sur leur colline au sud, la colline d'Antan » ; une « prise il y a 10 ans, personne ne sait où ». <span class="src">Davian Martikov, vignoble, 1er novembre 735</span></li>
-          <li>Sur la colline d'Antan, les druides ont dressé « une chose là-bas, une sorte de statue étrange, comme s'ils voulaient la réveiller ». <span class="src">Davian Martikov, vignoble, 1er novembre 735</span></li>
-          <li>Trois livraisons de vin régulières : à l'auberge de l'Eau Bleue (Vallaki), au campement vistani du sud, et au bourgmestre de Krezk. <span class="src">Davian Martikov, vignoble, 1er novembre 735</span></li>
-          <li>Sur les corbeaux du domaine : « présences occultes de la vallée, il ne faut jamais leur faire de mal... elles pourront probablement vous aider dans des moments difficiles si vous êtes amicaux avec eux ». <span class="src">Davian Martikov, vignoble, 1er novembre 735</span></li>
-          <li>Les druides avaient empoisonné les cuves et les tonneaux (identifié par Alaris) ; Pérégrine et Vrede ont purifié une première cuve avant de repartir vers la colline d'Antan. <span class="src">vignoble, 1er-2 novembre 735</span></li>
-          <li>De retour de la colline d'Antan, le groupe a rendu à Davian la pierre récupérée et purifié les deux dernières cuves contaminées : tout le stock de vin du domaine est désormais sain. Davian, reconnaissant, s'est aussi inquiété de ne pas avoir retrouvé certains biens de sa famille parmi les décombres. Le départ pour Krezk avec Adrian et Elvir a été repoussé au lendemain matin. <span class="src">vignoble, 2 novembre 735</span></li>
-          <li>Le groupe a récupéré sur un druide un bâton noir, identifié par Alaris comme un « bâton de Gulthias » : vol de vie, risque de folie, et un cri destructeur (portée d'environ 300 pieds) s'il est brisé ou brûlé. Confié à Vrede pour la colline d'Antan. <span class="src">vignoble, 1er-2 novembre 735</span></li>
-                  <li>Davian a chargé le groupe d'un message pour Urwin, aubergiste de l'Eau Bleue à Vallaki : « Dites-lui que le vieux corbeau tient encore debout, et qu'il y a dix ans, une nuit, quelqu'un aurait dû monter la garde. » <span class="src">Davian Martikov, vignoble du Magicien des Vins, 1er novembre 735</span></li>
+          <li>Le domaine était assiégé par des druides corrompus et leurs créatures de brindilles ; le groupe a levé le siège, tué les quatre druides et réinstallé la famille. <span class="src">vignoble du Magicien des Vins, 30-31 octobre 735</span></li>
+          <li>Davian Martikov, le patriarche, a confié : le domaine tient debout depuis des siècles grâce à trois pierres magiques (« grosses comme des pommes de pin »), des graines créées jadis par un magicien, d'où le nom du domaine. Les trois ont été volées, l'une après l'autre : une à Bérez (chez « la vieille qui y règne », qui hait les Martikov ; trois des leurs y sont allés, aucun n'est revenu) ; une prise « il y a quelques jours » par les druides « sur leur colline au sud, la colline d'Antan » ; une « prise il y a 10 ans, personne ne sait où ». <span class="src">Davian Martikov, vignoble, 30 octobre 735</span></li>
+          <li>Sur la colline d'Antan, les druides ont dressé « une chose là-bas, une sorte de statue étrange, comme s'ils voulaient la réveiller ». <span class="src">Davian Martikov, vignoble, 30 octobre 735</span></li>
+          <li>Trois livraisons de vin régulières : à l'auberge de l'Eau Bleue (Vallaki), au campement vistani du sud, et au bourgmestre de Krezk. <span class="src">Davian Martikov, vignoble, 30 octobre 735</span></li>
+          <li>Sur les corbeaux du domaine : « présences occultes de la vallée, il ne faut jamais leur faire de mal... elles pourront probablement vous aider dans des moments difficiles si vous êtes amicaux avec eux ». <span class="src">Davian Martikov, vignoble, 30 octobre 735</span></li>
+          <li>Les druides avaient empoisonné les cuves et les tonneaux (identifié par Alaris) ; Pérégrine et Vrede ont purifié une première cuve avant de repartir vers la colline d'Antan. <span class="src">vignoble, 30-31 octobre 735</span></li>
+          <li>De retour de la colline d'Antan, le groupe a rendu à Davian la pierre récupérée et purifié les deux dernières cuves contaminées : tout le stock de vin du domaine est désormais sain. Davian, reconnaissant, s'est aussi inquiété de ne pas avoir retrouvé certains biens de sa famille parmi les décombres. Le départ pour Krezk avec Adrian et Elvir a été repoussé au lendemain matin. <span class="src">vignoble, 31 octobre 735</span></li>
+          <li>Le groupe a récupéré sur un druide un bâton noir, identifié par Alaris comme un « bâton de Gulthias » : vol de vie, risque de folie, et un cri destructeur (portée d'environ 300 pieds) s'il est brisé ou brûlé. Confié à Vrede pour la colline d'Antan. <span class="src">vignoble, 30-31 octobre 735</span></li>
+                  <li>Davian a chargé le groupe d'un message pour Urwin, aubergiste de l'Eau Bleue à Vallaki : « Dites-lui que le vieux corbeau tient encore debout, et qu'il y a dix ans, une nuit, quelqu'un aurait dû monter la garde. » <span class="src">Davian Martikov, vignoble du Magicien des Vins, 30 octobre 735</span></li>
         </ul>
       </div>
 
       <div class="themeblock">
-        <h3 class="theme" id="t-antan">La colline d'Antan <span class="src">ce que le groupe y a vu, 2 novembre 735</span></h3>
+        <h3 class="theme" id="t-antan">La colline d'Antan <span class="src">ce que le groupe y a vu, 31 octobre 735</span></h3>
         <ul class="facts">
           <li>Un promontoire nu au sud du vignoble, couvert d'herbes mortes, sous un orage permanent qui frappe le sommet d'éclairs. À l'ouest de la colline se dresse un mur de brume immobile derrière lequel disparaissent la terre, les bois et le ciel.</li>
           <li>Deux anneaux concentriques de cairns (tas de pierres noires de 10 pieds de haut) ceinturent les pentes. Ce sont d'anciennes sépultures, bien plus vieilles que les druides qui occupent la colline aujourd'hui.</li>
           <li>Au sommet, un cercle de gros rochers noirs entoure un champ d'herbes mortes. Le même genre de cercle de pierres que celui vu près du Vieux Moulin des Guenaudes.</li>
           <li>Au centre du cercle, une statue de 50 pieds de haut faite de brindilles tressées et de terre noire, à l'image d'un homme massif en cape aux mains griffues, des racines l'enserrant à la base. De l'autre côté du champ, un arbre énorme ; à l'intérieur du cercle, quelques arbres plus modestes et douze petites tombes de pierres serrées autour de la statue.</li>
-          <li>À l'approche du groupe, les douze tombes se sont ouvertes : six silhouettes drapées de mousse et d'écorce en sont sorties pour chanter sans fin autour de la statue, et six brutes massives couvertes de boue grise, armées de haches de pierre, ont attaqué. Les six brutes ont été tuées ; les six chanteurs, eux, n'ont pas cessé, et les racines de la statue ont commencé à bouger. <span class="src">colline d'Antan, 2 novembre 735</span></li>
-          <li>Le chant s'est poursuivi malgré tout : deux des chanteurs ont fini par s'échapper, rendus invisibles, et la statue s'est transformée en une créature de bois vivante, une silhouette géante d'où irradiait une lumière verte. Elle a été vaincue au combat ; à l'instant même où elle s'est effondrée, le cavalier qui observait la scène depuis les hauteurs avait disparu. Dans ses restes, le groupe a retrouvé et identifié la pierre magique du vignoble. <span class="src">colline d'Antan, 2 novembre 735</span></li>
-          <li>Au sud du cercle, un arbre monstrueux, à la fois mort et vivant, suintait un liquide rougeâtre et était entouré de créatures de bois malade. Le groupe l'a abattu après un long combat ; en tombant, il a révélé de vieux cadavres et des ossements pris dans son bois. Une hache magique, efficace contre les plantes, a été trouvée près d'un vieux squelette à son pied. <span class="src">colline d'Antan, 2 novembre 735</span></li>
-          <li>À l'ouest, au bord du mur de brume, la même vision qu'en pleine bataille : une forteresse blanche au-dessus d'une cité lointaine, un tintement de cloche. Kassian s'y est aventuré quelques secondes : l'intérieur du mur ne laisse rien voir, et l'épreuve l'a laissé épuisé. <span class="src">colline d'Antan, 2 novembre 735</span></li>
-          <li>Parmi les cairns funéraires, le groupe a déterré une lance ancienne, la Lance de Sang de Kavan, un chef de guerre mort depuis des siècles dont la voix a contacté Vrede seul. Vrede a refusé de la manier ; elle a été confiée à Pérégrine. <span class="src">colline d'Antan, 2 novembre 735</span></li>
+          <li>À l'approche du groupe, les douze tombes se sont ouvertes : six silhouettes drapées de mousse et d'écorce en sont sorties pour chanter sans fin autour de la statue, et six brutes massives couvertes de boue grise, armées de haches de pierre, ont attaqué. Les six brutes ont été tuées ; les six chanteurs, eux, n'ont pas cessé, et les racines de la statue ont commencé à bouger. <span class="src">colline d'Antan, 31 octobre 735</span></li>
+          <li>Le chant s'est poursuivi malgré tout : deux des chanteurs ont fini par s'échapper, rendus invisibles, et la statue s'est transformée en une créature de bois vivante, une silhouette géante d'où irradiait une lumière verte. Elle a été vaincue au combat ; à l'instant même où elle s'est effondrée, le cavalier qui observait la scène depuis les hauteurs avait disparu. Dans ses restes, le groupe a retrouvé et identifié la pierre magique du vignoble. <span class="src">colline d'Antan, 31 octobre 735</span></li>
+          <li>Au sud du cercle, un arbre monstrueux, à la fois mort et vivant, suintait un liquide rougeâtre et était entouré de créatures de bois malade. Le groupe l'a abattu après un long combat ; en tombant, il a révélé de vieux cadavres et des ossements pris dans son bois. Une hache magique, efficace contre les plantes, a été trouvée près d'un vieux squelette à son pied. <span class="src">colline d'Antan, 31 octobre 735</span></li>
+          <li>À l'ouest, au bord du mur de brume, la même vision qu'en pleine bataille : une forteresse blanche au-dessus d'une cité lointaine, un tintement de cloche. Kassian s'y est aventuré quelques secondes : l'intérieur du mur ne laisse rien voir, et l'épreuve l'a laissé épuisé. <span class="src">colline d'Antan, 31 octobre 735</span></li>
+          <li>Parmi les cairns funéraires, le groupe a déterré une lance ancienne, la Lance de Sang de Kavan, un chef de guerre mort depuis des siècles dont la voix a contacté Vrede seul. Vrede a refusé de la manier ; elle a été confiée à Pérégrine. <span class="src">colline d'Antan, 31 octobre 735</span></li>
         </ul>
       </div>
 
@@ -493,14 +508,14 @@
         <h3 class="theme" id="t-moulin">Le Vieux Moulin et les Guenaudes</h3>
         <ul class="facts">
           <li>Le vieux moulin sur la route entre le village de Barovie et Vallaki, que les Vistani disent d'éviter absolument. Le groupe en détient l'acte de propriété (Manoir Durst) et l'a identifié comme tel dès le campement de l'étang de Tser. <span class="src">les Vistani et déduction du groupe, 23 octobre 735</span></li>
-          <li>Il est occupé par trois Guenaudes se faisant passer pour une meunière et ses filles. Celle qui accueille les visiteurs a l'apparence d'une meunière quadragénaire aimable ; les deux autres, dont la matriarche, se sont montrées au combat. Elles vendent des tartes « une pièce d'or », prétendent tenir le moulin « depuis des générations » et que « le comte les laisse tranquilles ». <span class="src">le Vieux Moulin, 30-31 octobre 735</span></li>
-          <li>Elles retenaient des enfants captifs. L'une d'elles a égorgé un jeune garçon sous les yeux du groupe quand celui-ci a refusé de se retirer ; une seconde enfant a été prise en otage. Le corps du garçon est préservé (Repos paisible) en vue d'une résurrection. <span class="src">le Vieux Moulin, 30 octobre 735</span></li>
-          <li>La matriarche a foudroyé le groupe entier d'un Éclair, l'a épargné, mais a fait couper une mèche de cheveux à chacun et réduit ses points de vie maximum (récupérés depuis, après un vrai long repos). <span class="src">le Vieux Moulin, 31 octobre 735 au matin</span></li>
-          <li>Elle a posé un ultimatum : livrer trois enfants « sous quelques jours », faute de quoi la Hantise nocturne reprend chaque nuit. Le groupe a catégoriquement refusé. <span class="src">le Vieux Moulin, 31 octobre 735</span></li>
-          <li>Motif invoqué par la matriarche : la Barovie est « un bocal » d'où les âmes ne sortent jamais ; Strahd en prélève sa part, les naissances déclinent, « le bocal se vide des deux côtés » ; seules les âmes d'enfants seraient « assez pures » pour porter ce genre de rêve. Ses tartes « fabriquent l'oubli ». <span class="src">le Vieux Moulin, 31 octobre 735</span></li>
-          <li>Selon le Père Lucian : c'est une « hantise nocturne » ; tant que les créatures gardent un lien physique (les mèches volées), elles rejoignent leurs victimes en rêve. Le sol consacré de la nef de Saint-Andral bloque leur intrusion, mais seulement tant qu'on y reste. Il n'a pas la magie pour les tuer. <span class="src">église Saint-Andral, Vallaki, 31 octobre 735</span></li>
-          <li>Selon Van Richten : le trio se retire à volonté dans le plan éthéré ; tant que les trois restent proches, elles partagent leurs sortilèges les plus destructeurs. En abattre une pour de bon, avant sa fuite, brise le couvent et prive les survivantes de ces sortilèges partagés. <span class="src">Tour de Khazan, lac Baratok, 1er novembre 735</span></li>
-          <li>La matriarche sort seule vendre ses tourtes près de la porte est de Vallaki, à intervalles réguliers. <span class="src">Ismark et Van Richten, 31 octobre - 1er novembre 735</span></li>
+          <li>Il est occupé par trois Guenaudes se faisant passer pour une meunière et ses filles. Celle qui accueille les visiteurs a l'apparence d'une meunière quadragénaire aimable ; les deux autres, dont la matriarche, se sont montrées au combat. Elles vendent des tartes « une pièce d'or », prétendent tenir le moulin « depuis des générations » et que « le comte les laisse tranquilles ». <span class="src">le Vieux Moulin, 28-29 octobre 735</span></li>
+          <li>Elles retenaient des enfants captifs. L'une d'elles a égorgé un jeune garçon sous les yeux du groupe quand celui-ci a refusé de se retirer ; une seconde enfant a été prise en otage. Le corps du garçon est préservé (Repos paisible) en vue d'une résurrection. <span class="src">le Vieux Moulin, 28 octobre 735</span></li>
+          <li>La matriarche a foudroyé le groupe entier d'un Éclair, l'a épargné, mais a fait couper une mèche de cheveux à chacun et réduit ses points de vie maximum (récupérés depuis, après un vrai long repos). <span class="src">le Vieux Moulin, 29 octobre 735 au matin</span></li>
+          <li>Elle a posé un ultimatum : livrer trois enfants « sous quelques jours », faute de quoi la Hantise nocturne reprend chaque nuit. Le groupe a catégoriquement refusé. <span class="src">le Vieux Moulin, 29 octobre 735</span></li>
+          <li>Motif invoqué par la matriarche : la Barovie est « un bocal » d'où les âmes ne sortent jamais ; Strahd en prélève sa part, les naissances déclinent, « le bocal se vide des deux côtés » ; seules les âmes d'enfants seraient « assez pures » pour porter ce genre de rêve. Ses tartes « fabriquent l'oubli ». <span class="src">le Vieux Moulin, 29 octobre 735</span></li>
+          <li>Selon le Père Lucian : c'est une « hantise nocturne » ; tant que les créatures gardent un lien physique (les mèches volées), elles rejoignent leurs victimes en rêve. Le sol consacré de la nef de Saint-Andral bloque leur intrusion, mais seulement tant qu'on y reste. Il n'a pas la magie pour les tuer. <span class="src">église Saint-Andral, Vallaki, 29 octobre 735</span></li>
+          <li>Selon Van Richten : le trio se retire à volonté dans le plan éthéré ; tant que les trois restent proches, elles partagent leurs sortilèges les plus destructeurs. En abattre une pour de bon, avant sa fuite, brise le couvent et prive les survivantes de ces sortilèges partagés. <span class="src">Tour de Khazan, lac Baratok, 30 octobre 735</span></li>
+          <li>La matriarche sort seule vendre ses tourtes près de la porte est de Vallaki, à intervalles réguliers. <span class="src">Ismark et Van Richten, 29 octobre - 30 octobre 735</span></li>
         </ul>
       </div>
 
@@ -509,19 +524,19 @@
         <ul class="facts">
           <li>Rumeur publique : un magicien fou aux grands pouvoirs hante les collines au pied du mont Baratok ; un étranger « qui n'apprécie pas du tout le vampire ». On le voyait rôder le long de la berge nord du lac Zarovich, tirant des éclairs dans l'eau pour tuer les poissons ; on ne l'a pas vu depuis un moment. <span class="src">Ismark, 22 octobre ; Père Lucian, 24 octobre 735 ; rumeurs de Vallaki</span></li>
           <li>Stanimir l'a relié au magicien étranger qui, un an plus tôt, a soulevé le village de Barovie contre Strahd, perdu le duel et été précipité des chutes de Tser (corps jamais retrouvé). Stanimir ne se souvient pas de son nom. <span class="src">campement de l'étang de Tser, 23 octobre 735</span></li>
-          <li>Van Richten a confirmé la rumeur d'un « mage fou » près du lac Zarovich, sans l'avoir approché lui-même. <span class="src">Tour de Khazan, lac Baratok, 1er novembre 735</span></li>
+          <li>Van Richten a confirmé la rumeur d'un « mage fou » près du lac Zarovich, sans l'avoir approché lui-même. <span class="src">Tour de Khazan, lac Baratok, 30 octobre 735</span></li>
         </ul>
       </div>
 
       <div class="themeblock">
         <h3 class="theme" id="t-vanrichten">Rudolph von Richten (alias Rictavio)</h3>
         <ul class="facts">
-          <li>Séjournait à l'auberge de Vallaki sous le nom de Rictavio, forain d'un « merveilleux carnaval », avec une roulotte, un singe et un tigre à dents de sabre dressé pour traquer les Vistani. <span class="src">Vallaki, 24-27 octobre 735</span></li>
+          <li>Séjournait à l'auberge de Vallaki sous le nom de Rictavio, forain d'un « merveilleux carnaval », avec une roulotte, un singe et un tigre à dents de sabre dressé pour traquer les Vistani. <span class="src">Vallaki, 24-26 octobre 735</span></li>
           <li>Sous couvert de Rictavio, il a raconté « l'histoire d'un tiers » : un médecin du Nord dont une famille de voyageurs a vendu le fils à un baron qui en a fait un monstre, et qui a dû « tailler un pieu et libérer son enfant » de ses mains ; depuis, « il ne soigne plus les vivants, il chasse les morts ». <span class="src">auberge de l'Eau Bleue, Vallaki, 24 octobre 735</span></li>
-          <li>Son tigre s'est échappé ; il a annoncé quitter Vallaki pour un lieu sûr, la tour du lac Baratok. <span class="src">Vallaki, 27 octobre 735</span></li>
-          <li>Il a révélé son identité : Rudolph von Richten, chasseur de monstres venu tuer le diable. Sa tour (bâtie par un ancien mage nommé Khazan) est protégée par un champ anti-magie total, gardée par des golems, et fermée par une porte-énigme : prononcer « Khazan » en enchaînant huit positions de bras. Il a une apprentie vistani, portée disparue, dont la roulotte est garée près de la tour. <span class="src">Tour de Khazan, lac Baratok, 1er novembre 735</span></li>
-          <li>Il s'est engagé à rejoindre le groupe pour l'affrontement final contre Strahd. Il a donné de l'équipement (pieux, eau bénite, carreaux d'argent, sa propre épée courte en argent à Ismark). Il dispose d'un sort capable de ramener une créature juste tuée à 1 point de vie, mais pas d'une Restauration supérieure (il ne peut donc rien contre une malédiction ou une perte de caractéristique). <span class="src">Tour de Khazan, lac Baratok, 1er novembre 735</span></li>
-          <li>Il tient tous les Vistani pour « les yeux et les oreilles du diable », à de très rares exceptions (Madame Eva, sa propre apprentie). <span class="src">Tour de Khazan, 1er novembre 735</span></li>
+          <li>Son tigre s'est échappé ; il a annoncé quitter Vallaki pour un lieu sûr, la tour du lac Baratok. <span class="src">Vallaki, 26 octobre 735</span></li>
+          <li>Il a révélé son identité : Rudolph von Richten, chasseur de monstres venu tuer le diable. Sa tour (bâtie par un ancien mage nommé Khazan) est protégée par un champ anti-magie total, gardée par des golems, et fermée par une porte-énigme : prononcer « Khazan » en enchaînant huit positions de bras. Il a une apprentie vistani, portée disparue, dont la roulotte est garée près de la tour. <span class="src">Tour de Khazan, lac Baratok, 30 octobre 735</span></li>
+          <li>Il s'est engagé à rejoindre le groupe pour l'affrontement final contre Strahd. Il a donné de l'équipement (pieux, eau bénite, carreaux d'argent, sa propre épée courte en argent à Ismark). Il dispose d'un sort capable de ramener une créature juste tuée à 1 point de vie, mais pas d'une Restauration supérieure (il ne peut donc rien contre une malédiction ou une perte de caractéristique). <span class="src">Tour de Khazan, lac Baratok, 30 octobre 735</span></li>
+          <li>Il tient tous les Vistani pour « les yeux et les oreilles du diable », à de très rares exceptions (Madame Eva, sa propre apprentie). <span class="src">Tour de Khazan, 30 octobre 735</span></li>
         </ul>
       </div>
 
@@ -530,33 +545,33 @@
         <ul class="facts">
           <li>Kasimir : elfe du crépuscule du campement vistani au sud de Vallaki, maîtrise la magie. <span class="src">campement vistani au sud de Vallaki, 25 octobre 735</span></li>
           <li>Il a confié avoir « perdu quelqu'un » à qui il tient, et croire que « l'intérieur du Temple d'Ambre pourrait briser le pacte de Strahd et libérer la Barovie de sa malédiction » ; son but est « de ramener quelqu'un [qu'il a] perdu ». Le Temple est lié à l'ambre, dans les monts au sud, sur le mont Ghakis ; le trajet et le lieu sont extrêmement dangereux (froid d'altitude, « des secrets bien plus anciens que Strahd »). <span class="src">campement vistani au sud de Vallaki, 25 octobre 735</span></li>
-          <li>Le serment est scellé : Kasimir a transmis le sortilège de Contresort à Alaris (150 po et 6 heures de retranscription) en échange de la promesse de l'accompagner un jour au Temple d'Ambre. <span class="src">campement vistani au sud de Vallaki, 31 octobre 735</span></li>
+          <li>Le serment est scellé : Kasimir a transmis le sortilège de Contresort à Alaris (150 po et 6 heures de retranscription) en échange de la promesse de l'accompagner un jour au Temple d'Ambre. <span class="src">campement vistani au sud de Vallaki, 29 octobre 735</span></li>
           <li>Le tirage du Tarokka situe l'épée de lumière solaire « derrière des portes d'ambre ». <span class="src">Madame Eva, campement de l'étang de Tser, 23 octobre 735</span></li>
         </ul>
       </div>
 
       <div class="themeblock">
         <h3 class="theme" id="t-manuscrit">Le manuscrit de Dame Wachter</h3>
-        <p class="lead">Un lourd manuscrit d'histoire locale, remis par Dame Wachter en récompense (Vallaki, 28 octobre 735) et lu par Alaris. Le groupe en tire trois légendes, sans nom d'auteur.</p>
+        <p class="lead">Un lourd manuscrit d'histoire locale, remis par Dame Wachter en récompense (Vallaki, 27 octobre 735) et lu par Alaris. Le groupe en tire trois légendes, sans nom d'auteur.</p>
         <ul class="facts">
-          <li>Un ancien ordre de chevaliers nobles avait juré de protéger la vallée avant les ténèbres ; leur forteresse, « dans les collines brumeuses au sud-ouest de Vallaki », abritait un immense phare d'argent et les reliques de leurs croisades. L'ordre a été anéanti lors d'une guerre ancienne ; les cryptes de la forteresse « inviolée » regorgeraient encore d'armes et d'armures bénies. <span class="src">manuscrit de Dame Wachter, 28 octobre 735</span></li>
-          <li>Avant les von Zarovich, la vallée était veillée par des entités païennes appelées les « Dames des Fanaux », esprits de la nature brisés ou chassés lors de la conquête. <span class="src">manuscrit de Dame Wachter, 28 octobre 735</span></li>
-          <li>Une mise en garde sur les sommets glacés du mont Ghakis, tout au sud : le Temple d'Ambre, « coffre-fort bâti par des mages d'un autre temps pour y cacher des secrets trop dangereux pour les mortels ». Depuis des siècles, des érudits et des mages « cherchant à forger des pactes de pouvoir absolu » s'y aventurent ; « aucun n'est jamais revenu ». <span class="src">manuscrit de Dame Wachter, 28 octobre 735</span></li>
+          <li>Un ancien ordre de chevaliers nobles avait juré de protéger la vallée avant les ténèbres ; leur forteresse, « dans les collines brumeuses au sud-ouest de Vallaki », abritait un immense phare d'argent et les reliques de leurs croisades. L'ordre a été anéanti lors d'une guerre ancienne ; les cryptes de la forteresse « inviolée » regorgeraient encore d'armes et d'armures bénies. <span class="src">manuscrit de Dame Wachter, 27 octobre 735</span></li>
+          <li>Avant les von Zarovich, la vallée était veillée par des entités païennes appelées les « Dames des Fanaux », esprits de la nature brisés ou chassés lors de la conquête. <span class="src">manuscrit de Dame Wachter, 27 octobre 735</span></li>
+          <li>Une mise en garde sur les sommets glacés du mont Ghakis, tout au sud : le Temple d'Ambre, « coffre-fort bâti par des mages d'un autre temps pour y cacher des secrets trop dangereux pour les mortels ». Depuis des siècles, des érudits et des mages « cherchant à forger des pactes de pouvoir absolu » s'y aventurent ; « aucun n'est jamais revenu ». <span class="src">manuscrit de Dame Wachter, 27 octobre 735</span></li>
         </ul>
       </div>
 
       <div class="themeblock">
         <h3 class="theme" id="t-objets">Objets et documents en main</h3>
         <ul class="facts">
-          <li>Le testament de Gustav et Elisabeth Durst et les actes de propriété : la maison Durst au village de Barovie et le moulin à vent à l'est de Vallaki (le Vieux Moulin). Dame Wachter a promis de soutenir la légitimité de ce titre « s'il s'avère authentique ». <span class="src">Manoir Durst, 20-21 octobre ; Fiona Wachter, Wachterhaus, 30 octobre 735</span></li>
-          <li>Le manuscrit d'histoire de Dame Wachter (voir le thème dédié). <span class="src">28 octobre 735</span></li>
+          <li>Le testament de Gustav et Elisabeth Durst et les actes de propriété : la maison Durst au village de Barovie et le moulin à vent à l'est de Vallaki (le Vieux Moulin). Dame Wachter a promis de soutenir la légitimité de ce titre « s'il s'avère authentique ». <span class="src">Manoir Durst, 20-21 octobre ; Fiona Wachter, Wachterhaus, 28 octobre 735</span></li>
+          <li>Le manuscrit d'histoire de Dame Wachter (voir le thème dédié). <span class="src">27 octobre 735</span></li>
           <li>Une outre de vin magique, ramassée sur la route : identifiée par Alaris, elle se remplit d'elle-même à condition d'être enterrée toute une nuit auprès d'un cadavre humain. Jamais utilisée (le groupe l'a jugée dérangeante). <span class="src">route de Svalich, 24 octobre 735</span></li>
-          <li>Le registre d'impôts du baron : la famille du baron tenait la ville « depuis un certain nombre de générations ». <span class="src">bureau du baron, manoir du bourgmestre, Vallaki, 28 octobre 735</span></li>
+          <li>Le registre d'impôts du baron : la famille du baron tenait la ville « depuis un certain nombre de générations ». <span class="src">bureau du baron, manoir du bourgmestre, Vallaki, 27 octobre 735</span></li>
           <li>Un coffre de 1200 pièces d'électrum, frappées du profil de Strahd, offert par Luvash en remerciement du sauvetage d'Arabelle. <span class="src">campement vistani au sud de Vallaki, 25 octobre 735</span></li>
-          <li>Le « bâton de Gulthias » récupéré au vignoble (voir le thème du vignoble). <span class="src">1er novembre 735</span></li>
-          <li>Le dessin d'enfance retrouvé sur le corps d'Izek : un garçon et une fillette rousse. <span class="src">cimetière Saint-Andral, Vallaki, 28 octobre 735</span></li>
+          <li>Le « bâton de Gulthias » récupéré au vignoble (voir le thème du vignoble). <span class="src">30 octobre 735</span></li>
+          <li>Le dessin d'enfance retrouvé sur le corps d'Izek : un garçon et une fillette rousse. <span class="src">cimetière Saint-Andral, Vallaki, 27 octobre 735</span></li>
           <li>Des flasques d'eau bénite fabriquées par Vrede, dont l'une confiée à Ireena. <span class="src">village de Barovie, 22 octobre ; Vallaki, 24 octobre 735</span></li>
-          <li>Une pelle et une flûte, achetées chez Darovich (8 po chacune). Ireena a complété ses carreaux d'arbalète. <span class="src">commerce de Darovich, Krezk, 4 novembre 735</span></li>
+          <li>Une pelle et une flûte, achetées chez Darovich (8 po chacune). Ireena a complété ses carreaux d'arbalète. <span class="src">commerce de Darovich, Krezk, 1er novembre 735</span></li>
         </ul>
       </div>
 
@@ -564,11 +579,11 @@
         <h3 class="theme" id="t-engagements">Promesses et engagements</h3>
         <ul class="facts">
           <li>Pérégrine au Père Donavich : si l'abbé ne peut rien pour son fils, le groupe reviendra « mettre fin à la souffrance de cet enfant ». <span class="src">village de Barovie, 22 octobre 735</span></li>
-          <li>Une faveur due aux frères Karl et Nikolai Wachter : un service unique, non précisé, en échange de leur aide pour piéger Izek, scellé par un billet signé puis une poignée de main. <span class="src">Vallaki, 27 octobre 735</span></li>
-          <li>Lars Kjurls et Udo Lukovich tiennent chacun un « historique » de ce qui se passe à Vallaki en l'absence du groupe. <span class="src">Vallaki, 28 octobre 735</span></li>
-          <li>Promesse à Dame Wachter : donner signe de vie sous une semaine, sinon elle supposera le groupe mort. <span class="src">Wachterhaus, Vallaki, 31 octobre 735</span></li>
-          <li>Van Richten a promis de rejoindre le groupe pour le combat final contre Strahd. <span class="src">Tour de Khazan, lac Baratok, 1er novembre 735</span></li>
-          <li>Le corps du garçon tué au Vieux Moulin est préservé par un sort de Repos paisible ; une résurrection demande 500 po de diamants, dans les 10 jours suivant la mort. <span class="src">le Vieux Moulin, 30 octobre 735 ; Van Richten, 1er novembre 735</span></li>
+          <li>Une faveur due aux frères Karl et Nikolai Wachter : un service unique, non précisé, en échange de leur aide pour piéger Izek, scellé par un billet signé puis une poignée de main. <span class="src">Vallaki, 26 octobre 735</span></li>
+          <li>Lars Kjurls et Udo Lukovich tiennent chacun un « historique » de ce qui se passe à Vallaki en l'absence du groupe. <span class="src">Vallaki, 27 octobre 735</span></li>
+          <li>Promesse à Dame Wachter : donner signe de vie sous une semaine, sinon elle supposera le groupe mort. <span class="src">Wachterhaus, Vallaki, 29 octobre 735</span></li>
+          <li>Van Richten a promis de rejoindre le groupe pour le combat final contre Strahd. <span class="src">Tour de Khazan, lac Baratok, 30 octobre 735</span></li>
+          <li>Le corps du garçon tué au Vieux Moulin est préservé par un sort de Repos paisible ; une résurrection demande 500 po de diamants, dans les 10 jours suivant la mort. <span class="src">le Vieux Moulin, 28 octobre 735 ; Van Richten, 30 octobre 735</span></li>
         </ul>
       </div>
 
@@ -579,7 +594,7 @@
           <li>Alaris portait une carte de Tarokka, « le Voyant », depuis cette nuit-là ; Madame Eva la lui a reprise (« elle t'a guidé jusqu'à moi »). <span class="src">campement de l'étang de Tser, 23 octobre 735</span></li>
           <li>La femme au carnet de cuir au pont des chutes de Tser, et la créature masquée sur la route de Svalich (voir « Créatures et dangers de la route »). Aucune identifiée. <span class="src">24 octobre 735</span></li>
           <li>Vrede a rêvé d'une femme au manteau rouge surplombant une maquette de Vallaki, faisant basculer la figurine d'un prêtre et ramassant six pions d'ébène : « Les pièces sont en place, petits héros, mais dans ce jeu, même les cavaliers finissent par tomber dans l'abîme. » Le lendemain, les six rejetons vampiriques s'échappaient. <span class="src">Vallaki, nuit du 24 au 25 octobre 735</span></li>
-          <li>Sous la Hantise du Vieux Moulin, les quatre aventuriers ont partagé une vision où le livre reçu de Dame Wachter se changeait en poussière, tandis qu'une voix de femme murmurait : « Ce que vous tenez n'est qu'une ombre de papier. La vérité dort encore, ailleurs, sous clé. » <span class="src">le Vieux Moulin, 31 octobre 735</span></li>
+          <li>Sous la Hantise du Vieux Moulin, les quatre aventuriers ont partagé une vision où le livre reçu de Dame Wachter se changeait en poussière, tandis qu'une voix de femme murmurait : « Ce que vous tenez n'est qu'une ombre de papier. La vérité dort encore, ailleurs, sous clé. » <span class="src">le Vieux Moulin, 29 octobre 735</span></li>
         </ul>
       </div>
   </section>
@@ -657,7 +672,7 @@
   <div class="quest">
     <h4><span class="name">Se débarrasser d'Izek Strazni</span></h4>
     <dl>
-      <dt>Où, quand</dt><dd>Dîner à Wachterhaus, Vallaki, 26 octobre 735.</dd>
+      <dt>Où, quand</dt><dd>Dîner à Wachterhaus, Vallaki, 25 octobre 735.</dd>
       <dt>Qui</dt><dd>Dame Fiona Wachter.</dd>
       <dt>Ce qui a été dit</dt><dd><span class="said">« Débarrassez-moi d'Izek Strazni… je vous paierai grassement et vous garantirai un sauf-conduit dans toute la vallée quand je dirigerai cette ville. »</span> Tant qu'Izek respire, la garde obéit au baron par terreur.</dd>
     </dl>
@@ -665,7 +680,7 @@
   <div class="quest">
     <h4><span class="name">Le fils d'une paroissienne</span></h4>
     <dl>
-      <dt>Où, quand</dt><dd>Devant l'auberge de l'Eau Bleue, Vallaki, 27 octobre 735.</dd>
+      <dt>Où, quand</dt><dd>Devant l'auberge de l'Eau Bleue, Vallaki, 25 octobre 735.</dd>
       <dt>Qui</dt><dd>Une paroissienne du Père Lucian.</dd>
       <dt>Ce qui a été dit</dt><dd>Agitée, elle explique que son fils a été arrêté par le baron pour avoir brandi une pancarte de protestation pendant le dernier festival, et qu'elle ne sait pas où il est, ni s'il est encore en vie.</dd>
     </dl>
@@ -673,7 +688,7 @@
   <div class="quest">
     <h4><span class="name">Le marché de la matriarche du Vieux Moulin</span></h4>
     <dl>
-      <dt>Où, quand</dt><dd>Le Vieux Moulin, 31 octobre 735 au matin.</dd>
+      <dt>Où, quand</dt><dd>Le Vieux Moulin, 29 octobre 735 au matin.</dd>
       <dt>Qui</dt><dd>La matriarche des Guenaudes.</dd>
       <dt>Ce qui a été dit</dt><dd><span class="said">« Donnez-moi trois enfants. N'importe où. N'importe comment… Amenez-les-moi. Et je vous laisserai tranquille. Refusez, ou traînez trop, et vous connaîtrez de nouveau ce que certains d'entre vous ont déjà goûté cette nuit. »</span></dd>
     </dl>
@@ -681,7 +696,7 @@
   <div class="quest">
     <h4><span class="name">L'offre de Strahd</span></h4>
     <dl>
-      <dt>Où, quand</dt><dd>Château de Ravenloft, 31 octobre 735.</dd>
+      <dt>Où, quand</dt><dd>Château de Ravenloft, 29 octobre 735.</dd>
       <dt>Qui</dt><dd>Strahd von Zarovich.</dd>
       <dt>Ce qui a été dit</dt><dd>Il élimine les Guenaudes et rase le moulin, en échange de Lady Ireena livrée « de son plein gré » à Ravenloft. « Une dette de sang. »</dd>
     </dl>
@@ -689,7 +704,7 @@
   <div class="quest">
     <h4><span class="name">Escorter Kasimir Velikov au Temple d'Ambre</span></h4>
     <dl>
-      <dt>Où, quand</dt><dd>Campement vistani au sud de Vallaki, 31 octobre 735.</dd>
+      <dt>Où, quand</dt><dd>Campement vistani au sud de Vallaki, 29 octobre 735.</dd>
       <dt>Qui</dt><dd>Kasimir Velikov.</dd>
       <dt>Ce qui a été dit</dt><dd>Il enseigne le sortilège de Contresort à Alaris (150 po et 6 heures de retranscription) en échange du serment d'escorte : l'accompagner un jour au Temple d'Ambre.</dd>
     </dl>
@@ -697,7 +712,7 @@
   <div class="quest">
     <h4><span class="name">L'offre de Luvash</span></h4>
     <dl>
-      <dt>Où, quand</dt><dd>Campement vistani au sud de Vallaki, 31 octobre 735.</dd>
+      <dt>Où, quand</dt><dd>Campement vistani au sud de Vallaki, 29 octobre 735.</dd>
       <dt>Qui</dt><dd>Luvash, chef du campement.</dd>
       <dt>Ce qui a été dit</dt><dd>Une fiole de poison de vipère à 200 po, à usage unique, ou une faveur en échange : rapporter aux Vistani ce que Kasimir confie au groupe.</dd>
     </dl>
@@ -705,11 +720,111 @@
   <div class="quest">
     <h4><span class="name">Une robe de mariée pour l'Abbé</span></h4>
     <dl>
-      <dt>Où, quand</dt><dd>Demeure des Krezkov, Krezk, 4 novembre 735.</dd>
+      <dt>Où, quand</dt><dd>Demeure des Krezkov, Krezk, 1er novembre 735.</dd>
       <dt>Qui</dt><dd>L'Abbé de Sainte-Markovia.</dd>
       <dt>Ce qui a été dit</dt><dd>Une belle robe de mariée, à des mesures de femme adulte (papier de mesures remis), « un projet » sur lequel il travaille. Elle compenserait la résurrection d'Ilya ; si le groupe y contribue, il lui fournira ses services en échange. Rien d'urgent : <span class="said">« je n'ai pas prévu de mariage demain »</span>.</dd>
     </dl>
   </div>
+</div>
+
+<!-- ================= ONGLET : CHRONOLOGIE ================= -->
+<div class="tabpanel" id="tab-chrono" role="tabpanel">
+  <h2 class="section">Chronologie</h2>
+  <p class="lead">Les journées vécues par le groupe depuis son arrivée en Barovie, jour après jour : les lieux traversés et les événements marquants.</p>
+  <ol class="tl">
+    <li class="tl-day"><h3 class="tl-date">Jeudi 19 octobre 735</h3><p class="tl-places">Route de la Côte des Épées</p><ul class="tl-ev">
+      <li><span class="tl-h">21h</span><span class="tl-t">Nuit de cauchemars partagés ; la caravane de Clarek disparaît dans le brouillard.</span></li>
+    </ul></li>
+    <li class="tl-day"><h3 class="tl-date">Vendredi 20 octobre 735</h3><p class="tl-places">Portes de Barovie, Manoir Durst</p><ul class="tl-ev">
+      <li><span class="tl-h">8h</span><span class="tl-t">Réveil en Barovie devant les Portes de Barovie, près du cadavre déchiqueté d'un messager qui porte la lettre de Kolyan.</span></li>
+      <li><span class="tl-h">8h40</span><span class="tl-t">Arrivée au Manoir Durst. <span class="tl-q">Quête</span> Le monstre du Manoir Durst, signalé par Rose et Thorn Durst.</span></li>
+      <li><span class="tl-h"></span><span class="tl-t">Exploration du manoir, culte des Prêtres d'Osibus, testament des Durst et actes de propriété (dont le Vieux Moulin) ; au grenier, montée de niveau et repos, réveil à 20h.</span></li>
+      <li><span class="tl-h">20h40</span><span class="tl-t">Confrontation avec Elisabeth Durst.</span></li>
+      <li><span class="tl-h">21h</span><span class="tl-t">Salle des rituels ; sortie du manoir à 21h20. Le chien Lancelot est adopté au manoir.</span></li>
+    </ul></li>
+    <li class="tl-day"><h3 class="tl-date">Samedi 21 octobre 735</h3><p class="tl-places">Village de Barovie</p><ul class="tl-ev">
+      <li><span class="tl-h">7h35</span><span class="tl-t">Arrivée au village de Barovie.</span></li>
+      <li><span class="tl-h"></span><span class="tl-t">Taverne du Sang sur les Vignes : trois femmes vistani orientent le groupe vers Madame Eva. <span class="tl-q">Quête</span> Escorter Ireena jusqu'à Vallaki, à la demande d'Ismark.</span></li>
+    </ul></li>
+    <li class="tl-day"><h3 class="tl-date">Dimanche 22 octobre 735</h3><p class="tl-places">Village de Barovie</p><ul class="tl-ev">
+      <li><span class="tl-h">8h30</span><span class="tl-t">Taverne du Sang sur les Vignes, puis le commerce de Bildrath.</span></li>
+      <li><span class="tl-h">9h30</span><span class="tl-t">Manoir du bourgmestre : Ireena et sa morsure. <span class="tl-q">Quête</span> Enterrer le bourgmestre Kolyan Indirovich.</span></li>
+      <li><span class="tl-h">9h50</span><span class="tl-t">Marie la Folle. <span class="tl-q">Quête</span> Retrouver Gertruda.</span></li>
+      <li><span class="tl-h">10h20</span><span class="tl-t">Église : le Père Donavich. <span class="tl-q">Quête</span> Le fils du Père Donavich, enfermé sous l'église.</span></li>
+      <li><span class="tl-h">11h30</span><span class="tl-t">Retour au manoir du bourgmestre.</span></li>
+    </ul></li>
+    <li class="tl-day"><h3 class="tl-date">Lundi 23 octobre 735</h3><p class="tl-places">Cimetière du village de Barovie, campement vistani de l'étang de Tser</p><ul class="tl-ev">
+      <li><span class="tl-h">5h</span><span class="tl-t">Funérailles de Kolyan ; Strahd apparaît en personne et présente ses condoléances à Ireena.</span></li>
+      <li><span class="tl-h">9h20</span><span class="tl-t">Campement vistani de l'étang de Tser : récit de Stanimir, tirage du Tarokka de Madame Eva.</span></li>
+    </ul></li>
+    <li class="tl-day"><h3 class="tl-date">Mardi 24 octobre 735</h3><p class="tl-places">Route de Svalich, chutes de Tser, carrefour de la Potence, Vallaki</p><ul class="tl-ev">
+      <li><span class="tl-h">8h</span><span class="tl-t">Départ du campement.</span></li>
+      <li><span class="tl-h"></span><span class="tl-t">Sur la route de Svalich, une créature masquée d'un crâne tranche une mèche de cheveux de Vrede ; au pont des chutes de Tser, quatre gargouilles attaquent sur l'ordre d'une femme au carnet de cuir.</span></li>
+      <li><span class="tl-h">11h</span><span class="tl-t">Une calèche noire aperçue, laissée de côté.</span></li>
+      <li><span class="tl-h">12h</span><span class="tl-t">Le Vieux Moulin aperçu ; rencontre de Vasili von Holtz sur la route.</span></li>
+      <li><span class="tl-h">13h</span><span class="tl-t">Arrivée à Vallaki. Église Saint-Andral (Père Lucian, Milivoj). <span class="tl-q">Quête</span> Les os de Saint-Andral. Atelier du fabricant de cercueils Henrik van der Voort ; à 15h, les os sont rendus au Père Lucian.</span></li>
+      <li><span class="tl-h"></span><span class="tl-t">Manoir du bourgmestre, le baron Vargas Vallakovich. <span class="tl-q">Quête</span> Surveiller Dame Fiona Wachter. Auberge de l'Eau Bleue à 16h30 (<span class="tl-q">Quête</span> les livraisons de vin en retard, pour Urwin Martikov), boutique de jouets de Blinsky à 17h30, Rictavio à 18h30.</span></li>
+      <li><span class="tl-h">Nuit</span><span class="tl-t">Vrede rêve d'une femme au manteau rouge penchée sur une maquette de Vallaki.</span></li>
+    </ul></li>
+    <li class="tl-day"><h3 class="tl-date">Mercredi 25 octobre 735</h3><p class="tl-places">Vallaki, lac Zarovich, campement vistani au sud de Vallaki, échoppe de Jenny, Wachterhaus</p><ul class="tl-ev">
+      <li><span class="tl-h">8h</span><span class="tl-t">Invitation du baron.</span></li>
+      <li><span class="tl-h">9h</span><span class="tl-t">Au lac Zarovich, sauvetage d'Arabelle, que Bluto tentait de noyer.</span></li>
+      <li><span class="tl-h">11h</span><span class="tl-t">Campement vistani au sud de Vallaki : Luvash, Arrigal, Kasimir ; un coffre d'électrum en remerciement.</span></li>
+      <li><span class="tl-h">13h30</span><span class="tl-t">Échoppe de Jenny, l'alchimiste hors les murs.</span></li>
+      <li><span class="tl-h"></span><span class="tl-t">Ce jour-là, les six rejetons vampiriques du grenier du fabricant de cercueils s'évadent en tuant deux gardes.</span></li>
+      <li><span class="tl-h">19h</span><span class="tl-t">Dîner à Wachterhaus. <span class="tl-q">Quête</span> Se débarrasser d'Izek Strazni, pour Dame Fiona Wachter.</span></li>
+      <li><span class="tl-h">21h</span><span class="tl-t">Devant l'auberge de l'Eau Bleue. <span class="tl-q">Quête</span> Le fils d'une paroissienne, arrêté par le baron.</span></li>
+    </ul></li>
+    <li class="tl-day"><h3 class="tl-date">Jeudi 26 octobre 735</h3><p class="tl-places">Vallaki, demeure de Vasili von Holtz</p><ul class="tl-ev">
+      <li><span class="tl-h">Matin</span><span class="tl-t">Poudre d'argent récupérée chez Wayland ; les piloris de la place ; audience chez le baron.</span></li>
+      <li><span class="tl-h">11h</span><span class="tl-t">Chez Vasili von Holtz.</span></li>
+      <li><span class="tl-h">14h</span><span class="tl-t">Auberge de l'Eau Bleue : pacte avec Karl et Nikolai Wachter.</span></li>
+      <li><span class="tl-h">22h</span><span class="tl-t">Une bête échappée dans les rues : le tigre de Rictavio, maîtrisé sans violence. Rictavio annonce quitter Vallaki pour la tour du lac Baratok.</span></li>
+    </ul></li>
+    <li class="tl-day"><h3 class="tl-date">Vendredi 27 octobre 735</h3><p class="tl-places">Vallaki : place, cimetière Saint-Andral, manoir du bourgmestre</p><ul class="tl-ev">
+      <li><span class="tl-h">11h50</span><span class="tl-t">Festival du Soleil Éclatant, noyé sous l'averse.</span></li>
+      <li><span class="tl-h">14h10</span><span class="tl-t">Au cimetière de Saint-Andral, le groupe exécute Izek Strazni.</span></li>
+      <li><span class="tl-h">14h20</span><span class="tl-t">Sur la place, la révolution de Dame Wachter a renversé le baron ; elle remet son manuscrit d'histoire au groupe.</span></li>
+      <li><span class="tl-h">14h40</span><span class="tl-t">Manoir du bourgmestre : Ireena retrouvée, Udo Lukovich libéré ; au grenier, Victor Vallakovich s'enfuit.</span></li>
+      <li><span class="tl-h">21h</span><span class="tl-t">Coucher à l'auberge de l'Eau Bleue ; niveau 5.</span></li>
+    </ul></li>
+    <li class="tl-day"><h3 class="tl-date">Samedi 28 octobre 735</h3><p class="tl-places">Vallaki, Wachterhaus, pierres anciennes, Vieux Moulin</p><ul class="tl-ev">
+      <li><span class="tl-h">7h</span><span class="tl-t">Visite à Udo Lukovich.</span></li>
+      <li><span class="tl-h">8h20</span><span class="tl-t">Audience chez Dame Wachter.</span></li>
+      <li><span class="tl-h">11h</span><span class="tl-t">Les pierres anciennes derrière le Vieux Moulin.</span></li>
+      <li><span class="tl-h">11h30</span><span class="tl-t">Combat au Vieux Moulin contre les Guenaudes : un garçon captif est égorgé, une fillette prise en otage, le groupe est terrassé.</span></li>
+    </ul></li>
+    <li class="tl-day"><h3 class="tl-date">Dimanche 29 octobre 735</h3><p class="tl-places">Vieux Moulin, château de Ravenloft, Vallaki, campement vistani au sud de Vallaki</p><ul class="tl-ev">
+      <li><span class="tl-h">7h</span><span class="tl-t">Réveil au Vieux Moulin. <span class="tl-q">Quête</span> Le marché de la matriarche : trois enfants sous quelques jours ; le groupe refuse.</span></li>
+      <li><span class="tl-h">9h</span><span class="tl-t">Audience au château de Ravenloft : Rahadin, puis Strahd. <span class="tl-q">Quête</span> L'offre de Strahd.</span></li>
+      <li><span class="tl-h">13h</span><span class="tl-t">Église Saint-Andral : le Père Lucian explique la hantise nocturne.</span></li>
+      <li><span class="tl-h">14h</span><span class="tl-t">Campement vistani au sud de Vallaki. <span class="tl-q">Quête</span> Escorter Kasimir Velikov au Temple d'Ambre ; Alaris apprend Contresort. <span class="tl-q">Quête</span> L'offre de Luvash.</span></li>
+      <li><span class="tl-h">21h</span><span class="tl-t">Wachterhaus : promesse à Dame Wachter de donner signe de vie sous une semaine.</span></li>
+      <li><span class="tl-h">Nuit</span><span class="tl-t">Repos dans la nef de Saint-Andral.</span></li>
+    </ul></li>
+    <li class="tl-day"><h3 class="tl-date">Lundi 30 octobre 735</h3><p class="tl-places">Lac Baratok, Tour de Khazan, vignoble du Magicien des Vins</p><ul class="tl-ev">
+      <li><span class="tl-h">8h</span><span class="tl-t">Départ de Vallaki vers le lac Baratok.</span></li>
+      <li><span class="tl-h">10h40</span><span class="tl-t">Cinq chasseurs croisés sur la route.</span></li>
+      <li><span class="tl-h">11h</span><span class="tl-t">Tour de Khazan : Rictavio révèle être Rudolph von Richten.</span></li>
+      <li><span class="tl-h"></span><span class="tl-t">À la sortie de la tour, embuscade des cinq chasseurs : trois loups-garous tués, deux enfuis.</span></li>
+      <li><span class="tl-h">14h</span><span class="tl-t">Vignoble du Magicien des Vins : Davian Martikov, puis l'embuscade des druides et de leurs créatures de brindilles. Domaine repris, famille réinstallée.</span></li>
+      <li><span class="tl-h">Nuit</span><span class="tl-t">Sous une cabane magique devant le vignoble.</span></li>
+    </ul></li>
+    <li class="tl-day"><h3 class="tl-date">Mardi 31 octobre 735</h3><p class="tl-places">Vignoble, colline d'Antan</p><ul class="tl-ev">
+      <li><span class="tl-h">8h</span><span class="tl-t">Une première cuve purifiée ; départ vers la colline d'Antan.</span></li>
+      <li><span class="tl-h">9h50</span><span class="tl-t">Au sommet : Strahd en cavalier de flammes, les tombes s'ouvrent, combat contre les druides ; la statue devient une créature de bois, vaincue ; une pierre magique du vignoble récupérée.</span></li>
+      <li><span class="tl-h"></span><span class="tl-t">L'arbre monstrueux abattu ; la vision de la cité au-delà du mur de brume ; la Lance de Sang de Kavan déterrée.</span></li>
+      <li><span class="tl-h">12h53</span><span class="tl-t">Retour au vignoble : la pierre rendue à Davian, les dernières cuves purifiées. Repos et nuit sur place ; niveau 6.</span></li>
+    </ul></li>
+    <li class="tl-day"><h3 class="tl-date">Dimanche 1er novembre 735</h3><p class="tl-places">Carrefour, Krezk, rive nord du lac Baratok</p><ul class="tl-ev">
+      <li><span class="tl-h">8h</span><span class="tl-t">Départ avec le convoi de vin d'Adrian et Elvir Martikov ; au carrefour, des empreintes de loups marchant debout.</span></li>
+      <li><span class="tl-h">9h20</span><span class="tl-t">Entrée à Krezk ; travaux au village, cimetière aux tombes fouillées, un nouveau-né qui ne crie pas.</span></li>
+      <li><span class="tl-h">Midi</span><span class="tl-t">Douze coups de cloche à l'abbaye ; déjeuner chez les Krezkov.</span></li>
+      <li><span class="tl-h">13h</span><span class="tl-t">Arrivée de l'Abbé, qui relève Ilya. <span class="tl-q">Quête</span> Une robe de mariée pour l'Abbé.</span></li>
+      <li><span class="tl-h"></span><span class="tl-t">Achats chez Darovich ; départ sur la piste des loups-garous le long du lac Baratok.</span></li>
+      <li><span class="tl-h">15h10</span><span class="tl-t">En vue d'une grotte en gueule de loup éclairée de torches.</span></li>
+    </ul></li>
+  </ol>
 </div>
 
 <!-- ================= ONGLET 3 : LE TIRAGE DU TAROKKA ================= -->
@@ -789,7 +904,7 @@
 </div>
 
 <footer>
-  Document de jeu, connaissances du groupe établies d'après tout ce qui a été vécu jusqu'au 4 novembre 735.
+  Document de jeu, connaissances du groupe établies d'après tout ce qui a été vécu jusqu'au 1er novembre 735.
   À compléter après chaque nouvelle veillée.
 </footer>
 
@@ -801,7 +916,7 @@
     set:function(k,v){try{localStorage.setItem(k,v)}catch(e){}}
   };
   var tabs = Array.prototype.slice.call(document.querySelectorAll('.tabbtn'));
-  var panels = { infos: document.getElementById('tab-infos'), quetes: document.getElementById('tab-quetes'), tarokka: document.getElementById('tab-tarokka') };
+  var panels = { infos: document.getElementById('tab-infos'), quetes: document.getElementById('tab-quetes'), tarokka: document.getElementById('tab-tarokka'), chrono: document.getElementById('tab-chrono') };
   function activate(name){
     if(!panels[name]) name = 'infos';
     tabs.forEach(function(b){
