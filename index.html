@@ -67,7 +67,8 @@
   }
   .tabbtn:hover{color:var(--ink)}
   .tabbtn.active{color:var(--accent);border-bottom-color:var(--accent)}
-  .roman-frame{display:block;width:100%;height:calc(100vh - 6rem);min-height:32rem;border:1px solid var(--rule);border-radius:6px;background:#fff}
+  html{overflow-x:hidden}
+  .roman-frame{display:block;width:100vw;margin-left:calc(50% - 50vw);height:calc(100vh - 6.2rem);min-height:32rem;border:0;border-top:1px solid var(--rule);background:#17130e}
   .roman-link{font-size:.9rem;color:var(--ink-soft);margin:0 0 .7rem}
   .tabpanel{display:none}
   .tabpanel.active{display:block}
@@ -942,7 +943,6 @@
 
 <!-- ================= ONGLET : LE ROMAN ================= -->
 <div class="tabpanel" id="tab-roman" role="tabpanel">
-  <h2 class="section">Le roman</h2>
   <p class="roman-link">La campagne racontée sous forme de roman. <a href="roman.html" target="_blank" rel="noopener">Ouvrir dans une page à part</a></p>
   <iframe class="roman-frame" id="roman-frame" data-src="roman.html" title="La Malédiction de Strahd, le roman"></iframe>
 </div>
