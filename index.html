@@ -67,6 +67,8 @@
   }
   .tabbtn:hover{color:var(--ink)}
   .tabbtn.active{color:var(--accent);border-bottom-color:var(--accent)}
+  .roman-frame{display:block;width:100%;height:calc(100vh - 6rem);min-height:32rem;border:1px solid var(--rule);border-radius:6px;background:#fff}
+  .roman-link{font-size:.9rem;color:var(--ink-soft);margin:0 0 .7rem}
   .tabpanel{display:none}
   .tabpanel.active{display:block}
 
@@ -285,6 +287,7 @@
   <button class="tabbtn" data-tab="quetes" role="tab" aria-selected="false">Quêtes</button>
   <button class="tabbtn" data-tab="chrono" role="tab" aria-selected="false">Chronologie</button>
   <button class="tabbtn" data-tab="tarokka" role="tab" aria-selected="false">Le tirage du Tarokka</button>
+  <button class="tabbtn" data-tab="roman" role="tab" aria-selected="false">Le roman</button>
 </div>
 
 <!-- ================= ONGLET 1 : INFORMATIONS CONNUES ================= -->
@@ -937,6 +940,13 @@
   </div>
 </div>
 
+<!-- ================= ONGLET : LE ROMAN ================= -->
+<div class="tabpanel" id="tab-roman" role="tabpanel">
+  <h2 class="section">Le roman</h2>
+  <p class="roman-link">La campagne racontée sous forme de roman. <a href="roman.html" target="_blank" rel="noopener">Ouvrir dans une page à part</a></p>
+  <iframe class="roman-frame" id="roman-frame" data-src="roman.html" title="La Malédiction de Strahd, le roman"></iframe>
+</div>
+
 <footer>
   Document de jeu, connaissances du groupe établies d'après tout ce qui a été vécu jusqu'au 1er novembre 735.
   À compléter après chaque nouvelle veillée.
@@ -950,7 +960,7 @@
     set:function(k,v){try{localStorage.setItem(k,v)}catch(e){}}
   };
   var tabs = Array.prototype.slice.call(document.querySelectorAll('.tabbtn'));
-  var panels = { infos: document.getElementById('tab-infos'), quetes: document.getElementById('tab-quetes'), tarokka: document.getElementById('tab-tarokka'), chrono: document.getElementById('tab-chrono') };
+  var panels = { infos: document.getElementById('tab-infos'), quetes: document.getElementById('tab-quetes'), tarokka: document.getElementById('tab-tarokka'), chrono: document.getElementById('tab-chrono'), roman: document.getElementById('tab-roman') };
   function activate(name){
     if(!panels[name]) name = 'infos';
     tabs.forEach(function(b){
@@ -959,6 +969,7 @@
       b.setAttribute('aria-selected', on ? 'true' : 'false');
     });
     Object.keys(panels).forEach(function(k){ panels[k].classList.toggle('active', k === name); });
+    if(name === 'roman'){ var f = document.getElementById('roman-frame'); if(!f.src) f.src = f.getAttribute('data-src'); }
     LS.set('cos-conn-tab2', name);
   }
   function panelOfHash(){
