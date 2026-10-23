@@ -68,7 +68,7 @@
   .tabbtn:hover{color:var(--ink)}
   .tabbtn.active{color:var(--accent);border-bottom-color:var(--accent)}
   html{overflow-x:hidden}
-  .roman-frame{display:block;width:100vw;margin-left:calc(50% - 50vw);height:calc(100vh - 6.2rem);min-height:32rem;border:0;border-top:1px solid var(--rule);background:#17130e}
+  .roman-frame{display:block;width:100vw;margin-left:calc(50% - 50vw);height:calc(100vh - 18rem);min-height:20rem;border:0;border-top:1px solid var(--rule);background:#17130e}
   .roman-link{font-size:.9rem;color:var(--ink-soft);margin:0 0 .7rem}
   .tabpanel{display:none}
   .tabpanel.active{display:block}
@@ -972,6 +972,15 @@
   };
   var tabs = Array.prototype.slice.call(document.querySelectorAll('.tabbtn'));
   var panels = { infos: document.getElementById('tab-infos'), quetes: document.getElementById('tab-quetes'), tarokka: document.getElementById('tab-tarokka'), chrono: document.getElementById('tab-chrono'), roman: document.getElementById('tab-roman') };
+  // le cadre du roman occupe exactement le reste de la fenêtre : sa barre latérale est visible en entier, sans avoir à faire défiler la page principale
+  function fitRoman(){
+    var f = document.getElementById('roman-frame');
+    if(!f || !panels.roman || !panels.roman.classList.contains('active')) return;
+    var top = f.getBoundingClientRect().top + (window.pageYOffset || 0);
+    f.style.height = Math.max(320, window.innerHeight - top - 4) + 'px';
+  }
+  window.addEventListener('resize', fitRoman);
+  window.addEventListener('load', fitRoman);
   function activate(name){
     if(!panels[name]) name = 'infos';
     tabs.forEach(function(b){
@@ -980,7 +989,7 @@
       b.setAttribute('aria-selected', on ? 'true' : 'false');
     });
     Object.keys(panels).forEach(function(k){ panels[k].classList.toggle('active', k === name); });
-    if(name === 'roman'){ var f = document.getElementById('roman-frame'); if(!f.src) f.src = f.getAttribute('data-src'); }
+    if(name === 'roman'){ var f = document.getElementById('roman-frame'); if(!f.src) f.src = f.getAttribute('data-src'); window.scrollTo(0,0); fitRoman(); }
     LS.set('cos-conn-tab2', name);
   }
   function panelOfHash(){
