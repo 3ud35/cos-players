@@ -59,7 +59,9 @@
   .tabbar{
     position:sticky;top:0;z-index:40;display:flex;gap:.3rem;
     background:var(--bg);border-bottom:2px solid var(--rule);
-    padding:.7rem .1rem 0;margin:1.4rem 0 1.6rem;
+    /* bannière sur toute la largeur de l'écran (le texte du roman, plus large que la page, ne passe plus sur ses côtés) ; les onglets gardent l'alignement du contenu */
+    width:100vw;margin:1.4rem 0 1.6rem calc(50% - 50vw);box-sizing:border-box;
+    padding:.7rem calc(max(0px, 50vw - 33rem) + 1.4rem) 0;
   }
   .tabbtn{
     cursor:pointer;border:none;background:none;font:inherit;font-weight:700;
